@@ -1,10 +1,10 @@
 NewMauville_Entrance_MapScripts:: @ 82372AD
-	map_script 1, NewMauville_Entrance_MapScript1_2372B8
-	map_script 3, NewMauville_Entrance_MapScript1_2372FB
+	map_script MAP_SCRIPT_ON_LOAD, NewMauville_Entrance_MapScript1_2372B8
+	map_script MAP_SCRIPT_ON_TRANSITION, NewMauville_Entrance_MapScript1_2372FB
 	.byte 0
 
 NewMauville_Entrance_MapScript1_2372B8: @ 82372B8
-	compare VAR_0x40BA, 0
+	compare VAR_NEW_MAUVILLE_STATE, 0
 	call_if_eq NewMauville_Entrance_EventScript_2372C4
 	end
 
@@ -41,7 +41,7 @@ NewMauville_Entrance_EventScript_2372FF:: @ 82372FF
 	setmetatile 5, 1, 717, 1
 	special DrawWholeMapView
 	playse SE_BAN
-	setvar VAR_0x40BA, 1
+	setvar VAR_NEW_MAUVILLE_STATE, 1
 	releaseall
 	end
 

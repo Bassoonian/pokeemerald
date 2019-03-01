@@ -1,6 +1,7 @@
 #include "constants/global.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_setup.h"
+#include "constants/easy_chat.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement_constants.h"
 #include "constants/field_effects.h"
@@ -8,6 +9,7 @@
 #include "constants/items.h"
 #include "constants/heal_locations.h"
 #include "constants/layouts.h"
+#include "constants/map_scripts.h"
 #include "constants/maps.h"
 #include "constants/moves.h"
 #include "constants/songs.h"
@@ -1099,7 +1101,7 @@ EverGrandeCity_HallOfFame_EventScript_2717C1:: @ 82717C1
 	setflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
 	clearflag FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
-	setvar VAR_0x40C6, 2
+	setvar VAR_STEVENS_HOUSE_STATE, 2
 	setflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
 	clearflag FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY
 	clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
@@ -1133,8 +1135,8 @@ EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
 	return
 
 EverGrandeCity_HallOfFame_EventScript_271843:: @ 8271843
-	setvar VAR_0x4082, 3
-	setvar VAR_0x408C, 3
+	setvar VAR_LITTLEROOT_HOUSES_STATE, 3
+	setvar VAR_LITTLEROOT_HOUSES_STATE_2, 3
 	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
 	return
 
@@ -1144,19 +1146,19 @@ EverGrandeCity_HallOfFame_EventScript_271851:: @ 8271851
 
 EventScript_WhiteOut:: @ 8271857
 	call EverGrandeCity_HallOfFame_EventScript_2718CC
-	goto EventScript_271862
+	goto EventScript_ResetMrBriney
 	end
 
-EventScript_271862:: @ 8271862
-	compare VAR_0x4096, 1
-	goto_if_eq EverGrandeCity_HallOfFame_EventScript_271884
-	compare VAR_0x4096, 2
-	goto_if_eq EverGrandeCity_HallOfFame_EventScript_27189A
-	compare VAR_0x4096, 3
-	goto_if_eq EverGrandeCity_HallOfFame_EventScript_2718B3
+EventScript_ResetMrBriney:: @ 8271862
+	compare VAR_BRINEY_LOCATION, 1
+	goto_if_eq EventScript_MoveMrBrineyToHouse
+	compare VAR_BRINEY_LOCATION, 2
+	goto_if_eq EventScript_MoveMrBrineyToDewford
+	compare VAR_BRINEY_LOCATION, 3
+	goto_if_eq EventScript_MoveMrBrineyToRoute108
 	end
 
-EverGrandeCity_HallOfFame_EventScript_271884:: @ 8271884
+EventScript_MoveMrBrineyToHouse:: @ 8271884
 	setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
 	setflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	setflag FLAG_HIDE_ROUTE_108_MR_BRINEY
@@ -1166,7 +1168,7 @@ EverGrandeCity_HallOfFame_EventScript_271884:: @ 8271884
 	clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
 	end
 
-EverGrandeCity_HallOfFame_EventScript_27189A:: @ 827189A
+EventScript_MoveMrBrineyToDewford:: @ 827189A
 	setflag FLAG_HIDE_ROUTE_108_MR_BRINEY
 	setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY
@@ -1177,7 +1179,7 @@ EverGrandeCity_HallOfFame_EventScript_27189A:: @ 827189A
 	clearflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
 	end
 
-EverGrandeCity_HallOfFame_EventScript_2718B3:: @ 82718B3
+EventScript_MoveMrBrineyToRoute108:: @ 82718B3
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
 	setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
@@ -1193,7 +1195,7 @@ EverGrandeCity_HallOfFame_EventScript_2718CC:: @ 82718CC
 	clearflag FLAG_DEFEATED_ELITE_4_PHOEBE
 	clearflag FLAG_DEFEATED_ELITE_4_GLACIA
 	clearflag FLAG_DEFEATED_ELITE_4_DRAKE
-	setvar VAR_0x409C, 0
+	setvar VAR_ELITE_4_STATE, 0
 	return
 
 DewfordTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
@@ -1213,15 +1215,15 @@ VerdanturfTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
 	return
 
 OldaleTown_PokemonCenter_1F_EventScript_27190C:: @ 827190C
-	setvar VAR_0x4096, 1
+	setvar VAR_BRINEY_LOCATION, 1
 	return
 
 OldaleTown_PokemonCenter_1F_EventScript_271912:: @ 8271912
-	setvar VAR_0x4096, 2
+	setvar VAR_BRINEY_LOCATION, 2
 	return
 
 OldaleTown_PokemonCenter_1F_EventScript_271918:: @ 8271918
-	setvar VAR_0x4096, 3
+	setvar VAR_BRINEY_LOCATION, 3
 	return
 
 BattleFrontier_PokemonCenter_1F_EventScript_27191E:: @ 827191E
@@ -1595,7 +1597,7 @@ EventScript_271D5E:: @ 8271D5E
 	goto EventScript_271D89
 
 EventScript_271D83:: @ 8271D83
-	special sub_80E6BE8
+	special RecordMixingPlayerSpotTriggered
 	waitstate
 	lock
 	faceplayer
@@ -1682,18 +1684,9 @@ Common_EventScript_ShowPokemonCenterSign:: @ 8271E73
 	msgbox gText_PokemonCenterSign, MSGBOX_SIGN
 	end
 
-BattleFrontier_BattleTowerLobby_EventScript_271E7C:: @ 8271E7C
-DewfordTown_EventScript_271E7C:: @ 8271E7C
-LilycoveCity_ContestLobby_EventScript_271E7C:: @ 8271E7C
-LilycoveCity_PokemonTrainerFanClub_EventScript_271E7C:: @ 8271E7C
-MauvilleCity_PokemonCenter_1F_EventScript_271E7C:: @ 8271E7C
-PetalburgCity_PokemonCenter_1F_EventScript_271E7C:: @ 8271E7C
-Route111_EventScript_271E7C:: @ 8271E7C
-Route123_BerryMastersHouse_EventScript_271E7C:: @ 8271E7C
-SlateportCity_OceanicMuseum_1F_EventScript_271E7C:: @ 8271E7C
-SlateportCity_PokemonFanClub_EventScript_271E7C:: @ 8271E7C
+Common_ShowEasyChatScreen:: @ 8271E7C
 	fadescreen 1
-	special easy_chat_input_maybe
+	special ShowEasyChatScreen
 	fadescreen 0
 	return
 
@@ -1715,8 +1708,8 @@ DewfordTown_Hall_EventScript_271E8B:: @ 8271E8B
 DewfordTown_EventScript_271E95:: @ 8271E95
 Route104_MrBrineysHouse_EventScript_271E95:: @ 8271E95
 Route109_EventScript_271E95:: @ 8271E95
-	copyvar VAR_0x8008, VAR_0x4096
-	setvar VAR_0x4096, 0
+	copyvar VAR_0x8008, VAR_BRINEY_LOCATION
+	setvar VAR_BRINEY_LOCATION, 0
 	return
 
 EventScript_UseSurf:: @ 8271EA0
@@ -1905,7 +1898,7 @@ Common_EventScript_NoRoomLeftForAnother:: @ 8272071
 	return
 
 Common_EventScript_SetWeather15:: @ 827207A
-	setweather WEATHER_15
+	setweather WEATHER_ALTERNATING
 	return
 
 Common_EventScript_PlayGymBadgeFanfare:: @ 827207E
@@ -1947,7 +1940,7 @@ Route109_EventScript_2720A8:: @ 82720A8
 LittlerootTown_ProfessorBirchsLab_EventScript_2720AD:: @ 82720AD
 Route101_EventScript_2720AD:: @ 82720AD
 Route103_EventScript_2720AD:: @ 82720AD
-	compare VAR_0x4085, 0
+	compare VAR_PETALBURG_GYM_STATE, 0
 	goto_if_eq Common_EventScript_NopReturn
 	goto_if_set FLAG_SYS_GAME_CLEAR, Route101_EventScript_27211A
 	compare VAR_BIRCH_STATE, 0
@@ -2066,7 +2059,7 @@ PetalburgCity_Gym_EventScript_2721F8:: @ 82721F8
 	setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
 	setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
 	setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	setvar VAR_0x4096, 0
+	setvar VAR_BRINEY_LOCATION, 0
 	return
 
 RusturfTunnel_EventScript_272216:: @ 8272216
@@ -2940,8 +2933,8 @@ EventScript_Questionnaire:: @ 827381B
 	msgbox gUnknown_0827339F, MSGBOX_YESNO
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_2738FD
-	setvar VAR_0x8004, 20
-	call MauvilleCity_PokemonCenter_1F_EventScript_271E7C
+	setvar VAR_0x8004, EASY_CHAT_TYPE_QUESTIONNAIRE
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	specialvar VAR_0x8008, sub_813B490
@@ -3173,14 +3166,14 @@ Route105_EventScript_273D17:: @ 8273D17
 Route125_EventScript_273D17:: @ 8273D17
 Route127_EventScript_273D17:: @ 8273D17
 Route129_EventScript_273D17:: @ 8273D17
-	setweather 13
+	setweather WEATHER_RAIN_HEAVY
 	return
 
 Route114_EventScript_273D1B:: @ 8273D1B
 Route115_EventScript_273D1B:: @ 8273D1B
 Route116_EventScript_273D1B:: @ 8273D1B
 Route118_EventScript_273D1B:: @ 8273D1B
-	setweather 12
+	setweather WEATHER_DROUGHT
 	return
 
 gUnknown_08273D1F:: @ 8273D1F
@@ -3195,7 +3188,7 @@ gUnknown_08273D1F:: @ 8273D1F
 Route105_EventScript_273D31:: @ 8273D31
 	closemessage
 	fadescreenswapbuffers 1
-	setweather 2
+	setweather WEATHER_SUNNY
 	doweather
 	call Route105_EventScript_273D6D
 	special DrawWholeMapView
@@ -3768,10 +3761,10 @@ SlateportCity_PokemonFanClub_EventScript_28C7F0:: @ 828C7F0
 
 SlateportCity_PokemonFanClub_EventScript_28C827:: @ 828C827
 	msgbox SlateportCity_PokemonFanClub_Text_28073B, MSGBOX_DEFAULT
-	setvar VAR_0x8004, 5
+	setvar VAR_0x8004, EASY_CHAT_TYPE_INTERVIEW
 	copyvar VAR_0x8005, VAR_0x8009
-	setvar VAR_0x8006, 1
-	call SlateportCity_PokemonFanClub_EventScript_271E7C
+	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_FEMALE
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 1
@@ -3823,10 +3816,10 @@ SlateportCity_OceanicMuseum_1F_EventScript_28C8C8:: @ 828C8C8
 
 SlateportCity_OceanicMuseum_1F_EventScript_28C8E7:: @ 828C8E7
 	msgbox SlateportCity_OceanicMuseum_1F_Text_2812F2, MSGBOX_DEFAULT
-	setvar VAR_0x8004, 5
+	setvar VAR_0x8004, EASY_CHAT_TYPE_INTERVIEW
 	copyvar VAR_0x8005, VAR_0x8009
-	setvar VAR_0x8006, 0
-	call SlateportCity_OceanicMuseum_1F_EventScript_271E7C
+	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_MALE
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 1
@@ -3895,17 +3888,17 @@ SlateportCity_PokemonFanClub_EventScript_28C9DF:: @ 828C9DF
 	end
 
 SlateportCity_PokemonFanClub_EventScript_28C9ED:: @ 828C9ED
-	setvar VAR_0x8004, 7
+	setvar VAR_0x8004, EASY_CHAT_TYPE_FAN_CLUB
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, 0
-	call SlateportCity_PokemonFanClub_EventScript_271E7C
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 0
 	goto_if_eq SlateportCity_PokemonFanClub_EventScript_28CA45
 	msgbox SlateportCity_PokemonFanClub_Text_2804AC, MSGBOX_DEFAULT
 	setvar VAR_0x8006, 1
-	call SlateportCity_PokemonFanClub_EventScript_271E7C
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 0
@@ -3944,10 +3937,10 @@ LilycoveCity_ContestLobby_EventScript_28CA59:: @ 828CA59
 
 LilycoveCity_ContestLobby_EventScript_28CA9B:: @ 828CA9B
 	msgbox LilycoveCity_ContestLobby_Text_27EFE7, MSGBOX_DEFAULT
-	setvar VAR_0x8004, 11
+	setvar VAR_0x8004, EASY_CHAT_TYPE_CONTEST_INTERVIEW
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, 0
-	call LilycoveCity_ContestLobby_EventScript_271E7C
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 1
@@ -3965,10 +3958,10 @@ LilycoveCity_ContestLobby_EventScript_28CADA:: @ 828CADA
 	setvar VAR_0x8004, 24
 	special SetContestCategoryStringVarForInterview
 	msgbox LilycoveCity_ContestLobby_Text_27F03E, MSGBOX_DEFAULT
-	setvar VAR_0x8004, 11
+	setvar VAR_0x8004, EASY_CHAT_TYPE_CONTEST_INTERVIEW
 	copyvar VAR_0x8005, VAR_0x8009
 	setvar VAR_0x8006, 1
-	call LilycoveCity_ContestLobby_EventScript_271E7C
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 0
@@ -3985,13 +3978,13 @@ LilycoveCity_ContestLobby_EventScript_28CB21:: @ 828CB21
 	end
 
 LilycoveCity_ContestLobby_EventScript_28CB2B:: @ 828CB2B
-	compare VAR_0x4086, 2
+	compare VAR_LINK_CONTEST_ROOM_STATE, 2
 	goto_if_ne LilycoveCity_ContestLobby_EventScript_28CB95
 	setvar VAR_0x8005, 6
 	special InterviewBefore
 	compare VAR_RESULT, 1
 	goto_if_eq LilycoveCity_ContestLobby_EventScript_28CB95
-	switch VAR_0x4088
+	switch VAR_CONTEST_LOCATION
 	case 0, LilycoveCity_ContestLobby_EventScript_28CB95
 	case 2, LilycoveCity_ContestLobby_EventScript_28CB91
 	case 1, LilycoveCity_ContestLobby_EventScript_28CB91
@@ -4033,9 +4026,9 @@ BattleFrontier_BattleTowerLobby_EventScript_28CBD8:: @ 828CBD8
 	compare VAR_RESULT, 1
 	call_if_eq BattleFrontier_BattleTowerLobby_EventScript_28CC41
 	msgbox BattleFrontier_BattleTowerLobby_Text_27F97A, MSGBOX_DEFAULT
-	setvar VAR_0x8004, 12
+	setvar VAR_0x8004, EASY_CHAT_TYPE_BATTLE_TOWER_INTERVIEW
 	copyvar VAR_0x8005, VAR_0x8009
-	call BattleFrontier_BattleTowerLobby_EventScript_271E7C
+	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
 	compare VAR_RESULT, 1
@@ -4078,7 +4071,7 @@ BattleFrontier_BattleTowerLobby_EventScript_28CC7A:: @ 828CC7A
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_28CC84:: @ 828CC84
-	compare VAR_0x40BC, 0
+	compare VAR_BRAVO_TRAINER_BATTLE_TOWER_ON, 0
 	goto_if_eq BattleFrontier_BattleTowerLobby_EventScript_28CCA6
 	setvar VAR_0x8005, 7
 	special InterviewBefore
@@ -4505,7 +4498,7 @@ LilycoveCity_PokemonCenter_1F_EventScript_2A861C:: @ 82A861C
 	special sub_818E3BC
 	compare VAR_0x8004, 0
 	goto_if_eq LilycoveCity_PokemonCenter_1F_EventScript_2A864C
-	compare VAR_0x8004, 15
+	compare VAR_0x8004, EASY_CHAT_TYPE_QUIZ_ANSWER
 	goto_if_eq LilycoveCity_PokemonCenter_1F_EventScript_2A8656
 
 LilycoveCity_PokemonCenter_1F_EventScript_2A8635:: @ 82A8635
@@ -5492,8 +5485,8 @@ gBattleDomeMatchNumberText15::
 	.string "Final Match$"
 
 BattleFrontier_BattlePikeRandomRoom1_MapScripts_2C3E1B: @ 82C3E1B
-	map_script 3, BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25
-	map_script 4, BattleFrontier_BattlePikeRandomRoom1_MapScript2_2C3EDE
+	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRandomRoom1_MapScript2_2C3EDE
 
 BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25: @ 82C3E25
 	setvar VAR_0x8004, 4

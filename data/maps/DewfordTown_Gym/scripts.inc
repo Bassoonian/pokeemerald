@@ -1,5 +1,5 @@
 DewfordTown_Gym_MapScripts:: @ 81FC63C
-	map_script 3, DewfordTown_Gym_MapScript1_1FC642
+	map_script MAP_SCRIPT_ON_TRANSITION, DewfordTown_Gym_MapScript1_1FC642
 	.byte 0
 
 DewfordTown_Gym_MapScript1_1FC642: @ 81FC642
@@ -173,8 +173,8 @@ DewfordTown_Gym_EventScript_1FC7F7:: @ 81FC7F7
 	msgbox DewfordTown_Gym_Text_1FD0A8, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_DEWFORD_GYM
 	setflag FLAG_BADGE02_GET
-	addvar VAR_0x4085, 1
-	compare VAR_0x4085, 6
+	addvar VAR_PETALBURG_GYM_STATE, 1
+	compare VAR_PETALBURG_GYM_STATE, 6
 	call_if_eq DewfordTown_Gym_EventScript_271E84
 	setvar VAR_0x8008, 2
 	call DewfordTown_Gym_EventScript_271F43

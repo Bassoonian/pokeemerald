@@ -1,7 +1,7 @@
 Route110_MapScripts:: @ 81EF269
-	map_script 5, Route110_MapScript1_1EF279
-	map_script 3, Route110_MapScript1_1EF27D
-	map_script 2, Route110_MapScript2_1EF297
+	map_script MAP_SCRIPT_ON_RESUME, Route110_MapScript1_1EF279
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_MapScript1_1EF27D
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_MapScript2_1EF297
 	.byte 0
 
 Route110_MapScript1_1EF279: @ 81EF279
@@ -496,7 +496,7 @@ Route110_EventScript_1EF8EC:: @ 81EF8EC
 	compare VAR_0x8008, 3
 	call_if_eq Route110_EventScript_1EF985
 	removeobject 29
-	setvar VAR_0x4069, 1
+	setvar VAR_ROUTE110_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	releaseall

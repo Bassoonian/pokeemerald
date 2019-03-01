@@ -1,11 +1,11 @@
 LilycoveCity_MapScripts:: @ 81E2B3C
-	map_script 3, LilycoveCity_MapScript1_1E2B47
-	map_script 1, LilycoveCity_MapScript1_1E2B61
+	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_MapScript1_1E2B47
+	map_script MAP_SCRIPT_ON_LOAD, LilycoveCity_MapScript1_1E2B61
 	.byte 0
 
 LilycoveCity_MapScript1_1E2B47: @ 81E2B47
 	setflag FLAG_VISITED_LILYCOVE_CITY
-	setvar VAR_0x4086, 0
+	setvar VAR_LINK_CONTEST_ROOM_STATE, 0
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetWeather15
 	call Common_EventScript_SetupRivalGender

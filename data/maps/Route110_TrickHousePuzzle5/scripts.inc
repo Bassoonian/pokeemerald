@@ -1,5 +1,5 @@
 Route110_TrickHousePuzzle5_MapScripts:: @ 826CAF0
-	map_script 3, Route110_TrickHousePuzzle5_MapScript1_26CAF6
+	map_script MAP_SCRIPT_ON_TRANSITION, Route110_TrickHousePuzzle5_MapScript1_26CAF6
 	.byte 0
 
 Route110_TrickHousePuzzle5_MapScript1_26CAF6: @ 826CAF6
@@ -13,13 +13,13 @@ Route110_TrickHousePuzzle5_MapScript1_26CAF6: @ 826CAF6
 
 Route110_TrickHousePuzzle5_EventScript_26CB15:: @ 826CB15
 	lockall
-	compare VAR_0x40AF, 0
+	compare VAR_TRICK_HOUSE_PUZZLE_5_STATE, 0
 	goto_if_eq Route110_TrickHousePuzzle5_EventScript_26CB27
 	goto Route110_TrickHousePuzzle5_EventScript_26A3DB
 	end
 
 Route110_TrickHousePuzzle5_EventScript_26CB27:: @ 826CB27
-	setvar VAR_0x40AF, 1
+	setvar VAR_TRICK_HOUSE_PUZZLE_5_STATE, 1
 	goto Route110_TrickHousePuzzle5_EventScript_26A3E5
 	end
 

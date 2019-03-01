@@ -1,7 +1,7 @@
 Route118_MapScripts:: @ 81F3DBC
-	map_script 3, Route118_MapScript1_1F3DCC
-	map_script 1, Route118_MapScript1_1F3DF3
-	map_script 2, Route118_MapScript2_1F3E0A
+	map_script MAP_SCRIPT_ON_TRANSITION, Route118_MapScript1_1F3DCC
+	map_script MAP_SCRIPT_ON_LOAD, Route118_MapScript1_1F3DF3
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route118_MapScript2_1F3E0A
 	.byte 0
 
 Route118_MapScript1_1F3DCC: @ 81F3DCC
@@ -107,7 +107,7 @@ Route118_EventScript_1F3EE4:: @ 81F3EE4
 	call_if_eq Route118_EventScript_1F3F3A
 	compare VAR_0x8008, 2
 	call_if_eq Route118_EventScript_1F3F4C
-	setvar VAR_0x4071, 1
+	setvar VAR_ROUTE118_STATE, 1
 	removeobject 19
 	releaseall
 	end

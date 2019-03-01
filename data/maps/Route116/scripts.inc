@@ -1,7 +1,7 @@
 Route116_MapScripts:: @ 81F2C0C
-	map_script 3, Route116_MapScript1_1F2C1C
-	map_script 1, Route116_MapScript1_1F2C4F
-	map_script 2, Route116_MapScript2_1F2C66
+	map_script MAP_SCRIPT_ON_TRANSITION, Route116_MapScript1_1F2C1C
+	map_script MAP_SCRIPT_ON_LOAD, Route116_MapScript1_1F2C4F
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route116_MapScript2_1F2C66
 	.byte 0
 
 Route116_MapScript1_1F2C1C: @ 81F2C1C
@@ -145,7 +145,7 @@ Route116_EventScript_1F2D84:: @ 81F2D84
 	lock
 	faceplayer
 	msgbox Route116_Text_1F309D, MSGBOX_DEFAULT
-	setvar VAR_0x406F, 2
+	setvar VAR_ROUTE116_STATE, 2
 	release
 	end
 
@@ -155,7 +155,7 @@ Route116_EventScript_1F2D95:: @ 81F2D95
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	msgbox Route116_Text_1F309D, MSGBOX_DEFAULT
-	setvar VAR_0x406F, 2
+	setvar VAR_ROUTE116_STATE, 2
 	releaseall
 	end
 

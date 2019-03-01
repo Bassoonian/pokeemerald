@@ -1,6 +1,6 @@
 RusturfTunnel_MapScripts:: @ 822CE27
-	map_script 3, RusturfTunnel_MapScript1_22CE44
-	map_script 2, RusturfTunnel_MapScript2_22CE32
+	map_script MAP_SCRIPT_ON_TRANSITION, RusturfTunnel_MapScript1_22CE44
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, RusturfTunnel_MapScript2_22CE32
 	.byte 0
 
 RusturfTunnel_MapScript2_22CE32: @ 822CE32
@@ -345,8 +345,8 @@ RusturfTunnel_EventScript_22D0C2:: @ 822D0C2
 	removeobject 7
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
-	setvar VAR_0x405A, 4
-	setvar VAR_0x4090, 1
+	setvar VAR_RUSTBORO_STATE, 4
+	setvar VAR_BRINEY_HOUSE_STATE, 1
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	release
 	end

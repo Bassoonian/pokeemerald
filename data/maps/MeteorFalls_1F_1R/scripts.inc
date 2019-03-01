@@ -1,5 +1,5 @@
 MeteorFalls_1F_1R_MapScripts:: @ 822BD2A
-	map_script 1, MeteorFalls_1F_1R_MapScript1_22BD30
+	map_script MAP_SCRIPT_ON_LOAD, MeteorFalls_1F_1R_MapScript1_22BD30
 	.byte 0
 
 MeteorFalls_1F_1R_MapScript1_22BD30: @ 822BD30
@@ -86,7 +86,7 @@ MeteorFalls_1F_1R_EventScript_22BD5F:: @ 822BD5F
 	setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
 	setflag FLAG_MET_ARCHIE_METEOR_FALLS
 	setflag FLAG_HIDE_FALLORBOR_TOWN_BATTLE_TENT_SCOTT
-	setvar VAR_0x40BF, 1
+	setvar VAR_METEOR_FALLS_STATE, 1
 	releaseall
 	end
 

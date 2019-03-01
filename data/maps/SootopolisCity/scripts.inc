@@ -1,9 +1,9 @@
 SootopolisCity_MapScripts:: @ 81E565C
-	map_script 1, SootopolisCity_MapScript1_1E5676
-	map_script 3, SootopolisCity_MapScript1_1E56EF
-	map_script 5, SootopolisCity_MapScript1_1E590B
-	map_script 2, SootopolisCity_MapScript2_1E5914
-	map_script 4, SootopolisCity_MapScript2_1E58DB
+	map_script MAP_SCRIPT_ON_LOAD, SootopolisCity_MapScript1_1E5676
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_MapScript1_1E56EF
+	map_script MAP_SCRIPT_ON_RESUME, SootopolisCity_MapScript1_1E590B
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SootopolisCity_MapScript2_1E5914
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SootopolisCity_MapScript2_1E58DB
 	.byte 0
 
 SootopolisCity_MapScript1_1E5676: @ 81E5676
@@ -214,7 +214,7 @@ SootopolisCity_EventScript_1E5946:: @ 81E5946
 	special RemoveCameraObject
 	delay 60
 	fadescreenspeed 1, 8
-	setweather WEATHER_15
+	setweather WEATHER_ALTERNATING
 	doweather
 	setvar VAR_0x8004, 0
 	special sub_813B7D8
@@ -314,7 +314,7 @@ SootopolisCity_EventScript_1E5A82:: @ 81E5A82
 	special RemoveCameraObject
 	delay 60
 	fadescreenspeed 1, 8
-	setweather WEATHER_15
+	setweather WEATHER_ALTERNATING
 	doweather
 	setvar VAR_0x8004, 0
 	special sub_813B7D8
@@ -1435,7 +1435,7 @@ SootopolisCity_EventScript_1E654C:: @ 81E654C
 	setflag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
 	clearflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
-	setvar VAR_0x40B9, 2
+	setvar VAR_MT_PYRE_STATE, 2
 	warpsilent MAP_SOOTOPOLIS_CITY, 255, 31, 34
 	waitstate
 	releaseall

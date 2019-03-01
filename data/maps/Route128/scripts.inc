@@ -1,6 +1,6 @@
 Route128_MapScripts:: @ 81F6B38
-	map_script 3, Route128_MapScript1_1F6B43
-	map_script 2, Route128_MapScript2_1F6B4D
+	map_script MAP_SCRIPT_ON_TRANSITION, Route128_MapScript1_1F6B43
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route128_MapScript2_1F6B4D
 	.byte 0
 
 Route128_MapScript1_1F6B43: @ 81F6B43
@@ -8,7 +8,7 @@ Route128_MapScript1_1F6B43: @ 81F6B43
 	end
 
 Route128_MapScript2_1F6B4D: @ 81F6B4D
-	map_script_2 VAR_0x407B, 1, Route128_EventScript_1F6B57
+	map_script_2 VAR_ROUTE128_STATE, 1, Route128_EventScript_1F6B57
 	.2byte 0
 
 Route128_EventScript_1F6B57:: @ 81F6B57
@@ -74,7 +74,7 @@ Route128_EventScript_1F6B57:: @ 81F6B57
 	removeobject 3
 	waitfieldeffect 30
 	clearflag FLAG_SPECIAL_FLAG_0x4000
-	setvar VAR_0x407B, 2
+	setvar VAR_ROUTE128_STATE, 2
 	releaseall
 	end
 

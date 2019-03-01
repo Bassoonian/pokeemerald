@@ -1,6 +1,6 @@
 MossdeepCity_SpaceCenter_2F_MapScripts:: @ 8223D58
-	map_script 3, MossdeepCity_SpaceCenter_2F_MapScript1_223D63
-	map_script 2, MossdeepCity_SpaceCenter_2F_MapScript2_223DB5
+	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_2F_MapScript1_223D63
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_SpaceCenter_2F_MapScript2_223DB5
 	.byte 0
 
 MossdeepCity_SpaceCenter_2F_MapScript1_223D63: @ 8223D63
@@ -248,7 +248,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_22400C:: @ 822400C
 	waitmovement 0
 	special SavePlayerParty
 	fadescreen 1
-	special sub_80F9438
+	special ChooseHalfPartyForBattle
 	waitstate
 	compare VAR_RESULT, 0
 	goto_if_ne MossdeepCity_SpaceCenter_2F_EventScript_224032
@@ -315,7 +315,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_224071:: @ 8224071
 	removeobject 4
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_INVISIBLE_NINJA_BOY
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
-	setvar VAR_0x40C6, 1
+	setvar VAR_STEVENS_HOUSE_STATE, 1
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
 	removeobject 3
 	setobjectxyperm 3, 5, 6
