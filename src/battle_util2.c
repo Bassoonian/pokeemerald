@@ -12,8 +12,6 @@
 
 void AllocateBattleResources(void)
 {
-    gBattleResources = gBattleResources; // something dumb needed to match
-
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
         InitTrainerHillBattleStruct();
 
