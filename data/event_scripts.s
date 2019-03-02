@@ -2503,10 +2503,10 @@ gText_WhichPCShouldBeAccessed:: @ 827266F
 	.string "Which PC should be accessed?$"
 
 gUnknown_0827268C:: @ 827268C
-	.string "Accessed SOMEONE'S PC.$"
+	.string "Accessed someone's PC.$"
 
 gUnknown_082726A3:: @ 82726A3
-	.string "POKéMON Storage System opened.$"
+	.string "Pokémon Storage System opened.$"
 
 gUnknown_082726C2:: @ 82726C2
 	.string "Accessed {PLAYER}'s PC.$"
@@ -2515,19 +2515,19 @@ gUnknown_082726D4:: @ 82726D4
 	.string "Accessed LANETTE's PC.$"
 
 gUnknown_082726EB:: @ 82726EB
-	.string "Hello, and welcome to\nthe POKéMON CENTER.\pWe restore your tired POKéMON\nto full health.\pWould you like to rest your POKéMON?$"
+	.string "Hello, and welcome to\nthe Pokémon Center.\pWe restore your tired Pokémon\nto full health.\pWould you like to rest your Pokémon?$"
 
 gUnknown_08272768:: @ 8272768
-	.string "Okay, I'll take your POKéMON\nfor a few seconds.$"
+	.string "Okay, I'll take your Pokémon\nfor a few seconds.$"
 
 gUnknown_08272798:: @ 8272798
-	.string "Thank you for waiting.\pWe've restored your POKéMON\nto full health.$"
+	.string "Thank you for waiting.\pWe've restored your Pokémon\nto full health.$"
 
 gUnknown_082727DB:: @ 82727DB
 	.string "We hope to see you again!$"
 
 gUnknown_082727F5:: @ 82727F5
-	.string "Hello, and welcome to\nthe POKéMON CENTER.\pWe restore your tired POKéMON\nto full health.\pWould you like to…$"
+	.string "Hello, and welcome to\nthe Pokémon Center.\pWe restore your tired Pokémon\nto full health.\pWould you like to…$"
 
 gUnknown_08272860:: @ 8272860
 	.string "Th-that card…\nCould it be… The GOLD CARD?!\pOh, the gold color is brilliant!\nThe four stars seem to sparkle!\pI've seen several TRAINERS with\na SILVER CARD before, but, {PLAYER},\lyou're the first TRAINER I've ever\lseen with a GOLD CARD!\pOkay, {PLAYER}, please allow me\nthe honor of resting your POKéMON!$"
@@ -2536,7 +2536,7 @@ gUnknown_08272982:: @ 8272982
 	.string "I'm delighted to see you, {PLAYER}!\nYou want the usual, am I right?$"
 
 gUnknown_082729C0:: @ 82729C0
-	.string "Okay, I'll take your POKéMON\nfor a few seconds.$"
+	.string "Okay, I'll take your Pokémon\nfor a few seconds.$"
 
 gUnknown_082729F0:: @ 82729F0
 	.string "Thank you for waiting.$"
@@ -2557,16 +2557,16 @@ gUnknown_08272A78:: @ 8272A78
 	.string "Obtained the {STR_VAR_2}!$"
 
 gUnknown_08272A89:: @ 8272A89
-	.string "The BAG is full…$"
+	.string "The Bag is full…$"
 
 gUnknown_08272A9A:: @ 8272A9A
-	.string "{PLAYER} put away the {STR_VAR_2}\nin the {STR_VAR_3} POCKET.$"
+	.string "{PLAYER} put away the {STR_VAR_2}\nin the {STR_VAR_3} Pocket.$"
 
 gUnknown_08272ABF:: @ 8272ABF
 	.string "{PLAYER} found one {STR_VAR_2}!$"
 
 gText_TooBadBagIsFull:: @ 8272AD0
-	.string "Too bad!\nThe BAG is full…$"
+	.string "Too bad!\nThe Bag is full…$"
 
 gUnknown_08272AEA:: @ 8272AEA
 	.string "{PLAYER} put away the {STR_VAR_2}\nin the BAG.$"
