@@ -121,18 +121,18 @@ const struct WildPokemonInfo gRoute103_FishingMonsInfo = {30, gRoute103_FishingM
 
 const struct WildPokemon gRoute104_LandMons[] =
 {
-    {4, 4, SPECIES_POOCHYENA},
-    {4, 4, SPECIES_WURMPLE},
-    {5, 5, SPECIES_POOCHYENA},
-    {5, 5, SPECIES_MARILL},
-    {4, 4, SPECIES_MARILL},
-    {5, 5, SPECIES_POOCHYENA},
-    {4, 4, SPECIES_TAILLOW},
-    {5, 5, SPECIES_TAILLOW},
-    {4, 4, SPECIES_WINGULL},
-    {4, 4, SPECIES_WINGULL},
-    {3, 3, SPECIES_WINGULL},
-    {5, 5, SPECIES_WINGULL},
+    {4, 4, SPECIES_SENTRET},
+    {4, 4, SPECIES_PIDGEY},
+    {5, 5, SPECIES_SENTRET},
+    {5, 5, SPECIES_LEDYBA},
+    {4, 4, SPECIES_LEDYBA},
+    {5, 5, SPECIES_SENTRET},
+    {4, 4, SPECIES_PIDGEY},
+    {5, 5, SPECIES_PIDGEY},
+    {4, 4, SPECIES_SLAKOTH},
+    {4, 4, SPECIES_SLAKOTH},
+    {3, 3, SPECIES_SLAKOTH},
+    {5, 5, SPECIES_SLAKOTH},
 };
 
 const struct WildPokemonInfo gRoute104_LandMonsInfo = {20, gRoute104_LandMons};
@@ -521,18 +521,18 @@ const struct WildPokemonInfo gRoute124_FishingMonsInfo = {30, gRoute124_FishingM
 
 const struct WildPokemon gPetalburgWoods_LandMons[] =
 {
-    {5, 5, SPECIES_POOCHYENA},
-    {5, 5, SPECIES_WURMPLE},
+    {5, 5, SPECIES_LEDYBA},
     {5, 5, SPECIES_SHROOMISH},
-    {6, 6, SPECIES_POOCHYENA},
-    {5, 5, SPECIES_SILCOON},
-    {5, 5, SPECIES_CASCOON},
-    {6, 6, SPECIES_WURMPLE},
+    {5, 5, SPECIES_SEEDOT},
+    {6, 6, SPECIES_LEDYBA},
+    {5, 5, SPECIES_PIDGEY},
+    {5, 5, SPECIES_PIDGEY},
     {6, 6, SPECIES_SHROOMISH},
-    {5, 5, SPECIES_TAILLOW},
-    {5, 5, SPECIES_SLAKOTH},
-    {6, 6, SPECIES_TAILLOW},
-    {6, 6, SPECIES_SLAKOTH},
+    {6, 6, SPECIES_SEEDOT},
+    {5, 5, SPECIES_SEEDOT},
+    {5, 5, SPECIES_SENTRET},
+    {6, 6, SPECIES_SEEDOT},
+    {6, 6, SPECIES_SENTRET},
 };
 
 const struct WildPokemonInfo gPetalburgWoods_LandMonsInfo = {20, gPetalburgWoods_LandMons};
