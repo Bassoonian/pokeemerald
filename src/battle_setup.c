@@ -899,9 +899,11 @@ static void CB2_GiveStarter(void)
     starterMon = GetStarterPokemon(gSpecialVar_Result);
     ScriptGiveMon(starterMon, 5, 0, 0, 0, 0);
     ResetTasks();
-    PlayBattleBGM();
-    SetMainCallback2(CB2_StartFirstBattle);
-    BattleTransition_Start(B_TRANSITION_BLUR);
+    //PlayBattleBGM();
+    SetMainCallback2(CB2_EndFirstBattle); //Replacing Start with End skips the actual battle
+    //BattleTransition_Start(B_TRANSITION_BLUR);
+    FadeScreen(1,0);
+    //JASPTODO: Fix transition
 }
 
 static void CB2_StartFirstBattle(void)
@@ -926,6 +928,9 @@ static void CB2_StartFirstBattle(void)
 
 static void CB2_EndFirstBattle(void)
 {
+    UpdatePaletteFade();
+    if (gPaletteFade.active)
+        return;
     Overworld_ClearSavedMusic();
     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
 }

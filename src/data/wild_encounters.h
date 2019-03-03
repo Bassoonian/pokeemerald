@@ -13,18 +13,18 @@
 
 const struct WildPokemon gRoute101_LandMons[] =
 {
-    {2, 2, SPECIES_WURMPLE},
-    {2, 2, SPECIES_POOCHYENA},
-    {2, 2, SPECIES_WURMPLE},
-    {3, 3, SPECIES_WURMPLE},
-    {3, 3, SPECIES_POOCHYENA},
-    {3, 3, SPECIES_POOCHYENA},
-    {3, 3, SPECIES_WURMPLE},
-    {3, 3, SPECIES_POOCHYENA},
-    {2, 2, SPECIES_ZIGZAGOON},
-    {2, 2, SPECIES_ZIGZAGOON},
-    {3, 3, SPECIES_ZIGZAGOON},
-    {3, 3, SPECIES_ZIGZAGOON},
+    {2, 2, SPECIES_SENTRET},
+    {2, 2, SPECIES_PIDGEY},
+    {2, 2, SPECIES_SENTRET},
+    {3, 3, SPECIES_SENTRET},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_PIDGEY},
+    {3, 3, SPECIES_SENTRET},
+    {3, 3, SPECIES_PIDGEY},
+    {2, 2, SPECIES_LEDYBA},
+    {2, 2, SPECIES_LEDYBA},
+    {3, 3, SPECIES_LEDYBA},
+    {3, 3, SPECIES_LEDYBA},
 };
 
 const struct WildPokemonInfo gRoute101_LandMonsInfo = {20, gRoute101_LandMons};

@@ -5,58 +5,58 @@ const u8 gDummyPokedexText[] = _(
     "at this time.");
 
 const u8 gBulbasaurPokedexText[] = _(
-    "BULBASAUR can be seen napping in bright\n"
-    "sunlight. There is a seed on its back.\n"
-    "By soaking up the sun's rays, the seed\n"
-    "grows progressively larger.");
+    "It is very intelligent and calm. Being\n"
+    "exposed to sunlight makes its movements\n"
+    "swifter. It uses vines more adeptly than\n"
+    "its hands.\n");
 
 const u8 gIvysaurPokedexText[] = _(
-    "To support its bulb, IVYSAUR's legs\n"
-    "grow sturdy. If it spends more time lying in\n"
-    "the sunlight, the bud will soon bloom into\n"
-    "a large flower.");
+    "It avoids attacks by sinking into the.\n"
+    "shadows of thick foliage. Its swift movements\n"
+    "befuddle its foes, and then it attacks with a\n"
+    "vine whip.");
 
 const u8 gVenusaurPokedexText[] = _(
-    "VENUSAUR's flower is said to take on vivid\n"
-    "colors if it gets plenty of nutrition and\n"
-    "sunlight. The flower's aroma soothes the\n"
-    "emotions of people.");
+    "It only gives its all against strong\n"
+    "opponents who are not fazed by the glare\n"
+    "from Serperior's noble eyes. It takes in\n"
+    "solar energy and boosts it internally.");
 
 const u8 gCharmanderPokedexText[] = _(
-    "The flame that burns at the tip of its\n"
-    "tail is an indication of its emotions.\n"
-    "The flame wavers when CHARMANDER is\n"
-    "happy, and blazes when it is enraged.");
+    "It can deftly dodge its foe's attacks\n"
+    "while shooting fireballs from its nose.\n"
+    "When it catches a cold, the fire becomes\n"
+    "pitch-black smoke instead.");
 
 const u8 gCharmeleonPokedexText[] = _(
-    "Without pity, its sharp claws destroy foes.\n"
-    "If it encounters a strong enemy, it\n"
-    "becomes agitated, and the flame on its\n"
-    "tail flares with a bluish white color.");
+    "The more it eats, the more fuel it has to\n"
+    "make the fire in its stomach stronger.\n"
+    "When it is angered, the intensity of the\n"
+    "flame increases.");
 
 const u8 gCharizardPokedexText[] = _(
-    "A CHARIZARD flies about in search of\n"
-    "strong opponents. It breathes intense\n"
-    "flames that can melt any material. However,\n"
-    "it will never torch a weaker foe.");
+    "It can throw a fire punch by settings its\n"
+    "fists on fire with its fiery chin. It is\n"
+    "adept at using many different moves and\n"
+    "cares deeply about its friends.");
 
 const u8 gSquirtlePokedexText[] = _(
-    "Its shell is not just for protection.\n"
-    "Its rounded shape and the grooves on its\n"
-    "surface minimize resistance in water,\n"
-    "enabling SQUIRTLE to swim at high speeds.");
+    "The scalchop on its stomach isn't just\n"
+    "used for battle - it can be used to\n"
+    "break open hard berries as well.\n"
+    "It retaliates immediately by slashing.");
 
 const u8 gWartortlePokedexText[] = _(
-    "Its large tail is covered with rich, thick\n"
-    "fur that deepens in color with age.\n"
-    "The scratches on its shell are evidence\n"
-    "of this POKéMON's toughness in battle.");
+    "Scalchop techniques differ from one\n"
+    "Dewott to another. It never neglects\n"
+    "maintaining them and practices strict\n"
+    "training.");
 
 const u8 gBlastoisePokedexText[] = _(
-    "The waterspouts that protrude from its\n"
-    "shell are highly accurate. Their bullets of\n"
-    "water can precisely nail tin cans from\n"
-    "a distance of over 160 feet.");
+    "One swing of the sword incorporated in its\n"
+    "armor can fell an opponent. In the time it\n"
+    "takes a foe to blink, it can draw and sheathe\n"
+    "the seamitars attached to its front legs.");
 
 const u8 gCaterpiePokedexText[] = _(
     "Its voracious appetite compels it to\n"
@@ -101,16 +101,16 @@ const u8 gPidgeyPokedexText[] = _(
     "from its familiar surroundings.");
 
 const u8 gPidgeottoPokedexText[] = _(
-    "This POKéMON flies around, patrolling its\n"
+    "This Pokémon flies around, patrolling its\n"
     "large territory. If its living space is\n"
     "violated, it shows no mercy in thoroughly\n"
     "punishing the foe with its sharp claws.");
 
 const u8 gPidgeotPokedexText[] = _(
-    "This POKéMON has gorgeous, glossy\n"
-    "feathers. Many TRAINERS are so captivated\n"
+    "This Pokémon has gorgeous, glossy\n"
+    "feathers. Many Trainers are so captivated\n"
     "by the beautiful feathers on its head that\n"
-    "they choose PIDGEOT as their POKéMON.");
+    "they choose Pidgeot as their Pokémon.");
 
 const u8 gRattataPokedexText[] = _(
     "A RATTATA is cautious in the extreme.\n"
@@ -971,7 +971,7 @@ const u8 gSentretPokedexText[] = _(
     "separated, it turns sleepless with fear.");
 
 const u8 gFurretPokedexText[] = _(
-    "A FURRET has a very slim build. When under\n"
+    "A Furret has a very slim build. When under\n"
     "attack, it can squirm through narrow\n"
     "spaces and get away. In spite of its short\n"
     "limbs, it is very nimble and fleet.");
