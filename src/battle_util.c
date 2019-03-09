@@ -332,10 +332,10 @@ void PressurePPLose(u8 target, u8 attacker, u16 move)
     }
 }
 
-void PressurePPLoseOnUsingImprision(u8 attacker)
+void PressurePPLoseOnUsingImprison(u8 attacker)
 {
     int i, j;
-    int imprisionPos = 4;
+    int imprisonPos = 4;
     u8 atkSide = GetBattlerSide(attacker);
 
     for (i = 0; i < gBattlersCount; i++)
@@ -349,19 +349,19 @@ void PressurePPLoseOnUsingImprision(u8 attacker)
             }
             if (j != MAX_MON_MOVES)
             {
-                imprisionPos = j;
+                imprisonPos = j;
                 if (gBattleMons[attacker].pp[j] != 0)
                     gBattleMons[attacker].pp[j]--;
             }
         }
     }
 
-    if (imprisionPos != 4
+    if (imprisonPos != 4
         && !(gBattleMons[attacker].status2 & STATUS2_TRANSFORMED)
-        && !(gDisableStructs[attacker].mimickedMoves & gBitTable[imprisionPos]))
+        && !(gDisableStructs[attacker].mimickedMoves & gBitTable[imprisonPos]))
     {
         gActiveBattler = attacker;
-        BtlController_EmitSetMonData(0, REQUEST_PPMOVE1_BATTLE + imprisionPos, 0, 1, &gBattleMons[gActiveBattler].pp[imprisionPos]);
+        BtlController_EmitSetMonData(0, REQUEST_PPMOVE1_BATTLE + imprisonPos, 0, 1, &gBattleMons[gActiveBattler].pp[imprisonPos]);
         MarkBattlerForControllerExec(gActiveBattler);
     }
 }
@@ -458,7 +458,7 @@ bool8 WasUnableToUseMove(u8 battler)
 {
     if (gProtectStructs[battler].prlzImmobility
         || gProtectStructs[battler].targetNotAffected
-        || gProtectStructs[battler].usedImprisionedMove
+        || gProtectStructs[battler].usedImprisonedMove
         || gProtectStructs[battler].loveImmobility
         || gProtectStructs[battler].usedDisabledMove
         || gProtectStructs[battler].usedTauntedMove
@@ -682,12 +682,12 @@ u8 TrySetCantSelectMoveBattleScript(void)
         gCurrentMove = move;
         if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         {
-            gPalaceSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingImprisionedMoveInPalace;
+            gPalaceSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingImprisonedMoveInPalace;
             gProtectStructs[gActiveBattler].palaceUnableToUseMove = 1;
         }
         else
         {
-            gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingImprisionedMove;
+            gSelectionBattleScripts[gActiveBattler] = BattleScript_SelectingImprisonedMove;
             limitations++;
         }
     }
@@ -803,7 +803,7 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u8 check)
             unusableMoves |= gBitTable[i];
         else if (gDisableStructs[battlerId].tauntTimer && check & MOVE_LIMITATION_TAUNT && gBattleMoves[gBattleMons[battlerId].moves[i]].power == 0)
             unusableMoves |= gBitTable[i];
-        else if (GetImprisonedMovesCount(battlerId, gBattleMons[battlerId].moves[i]) && check & MOVE_LIMITATION_IMPRISION)
+        else if (GetImprisonedMovesCount(battlerId, gBattleMons[battlerId].moves[i]) && check & MOVE_LIMITATION_IMPRISON)
             unusableMoves |= gBitTable[i];
         else if (gDisableStructs[battlerId].encoreTimer && gDisableStructs[battlerId].encoredMove != gBattleMons[battlerId].moves[i])
             unusableMoves |= gBitTable[i];
@@ -842,7 +842,7 @@ bool8 AreAllMovesUnusable(void)
 u8 GetImprisonedMovesCount(u8 battlerId, u16 move)
 {
     s32 i;
-    u8 imprisionedMoves = 0;
+    u8 imprisonedMoves = 0;
     u8 battlerSide = GetBattlerSide(battlerId);
 
     for (i = 0; i < gBattlersCount; i++)
@@ -856,11 +856,11 @@ u8 GetImprisonedMovesCount(u8 battlerId, u16 move)
                     break;
             }
             if (j < MAX_MON_MOVES)
-                imprisionedMoves++;
+                imprisonedMoves++;
         }
     }
 
-    return imprisionedMoves;
+    return imprisonedMoves;
 }
 
 enum
@@ -1256,10 +1256,11 @@ u8 DoFieldEndTurnEffects(void)
             gBattleStruct->turnCountersTracker++;
             break;
         case ENDTURN_GRASSY_TERRAIN:
-            if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && --gFieldTimers.grassyTerrainTimer == 0)
+            if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
             {
-                gFieldStatuses &= ~(STATUS_FIELD_GRASSY_TERRAIN);
-                BattleScriptExecute(BattleScript_GrassyTerrainEnds);
+                if (gFieldTimers.grassyTerrainTimer == 0 || --gFieldTimers.grassyTerrainTimer == 0)
+                    gFieldStatuses &= ~(STATUS_FIELD_GRASSY_TERRAIN);
+                BattleScriptExecute(BattleScript_GrassyTerrainLoop);
                 effect++;
             }
             gBattleStruct->turnCountersTracker++;
@@ -2190,7 +2191,7 @@ u8 AtkCanceller_UnableToUseMove(void)
         case CANCELLER_IMPRISONED: // imprisoned
             if (GetImprisonedMovesCount(gBattlerAttacker, gCurrentMove))
             {
-                gProtectStructs[gBattlerAttacker].usedImprisionedMove = 1;
+                gProtectStructs[gBattlerAttacker].usedImprisonedMove = 1;
                 CancelMultiTurnMoves(gBattlerAttacker);
                 gBattlescriptCurrInstr = BattleScript_MoveUsedIsImprisoned;
                 gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
@@ -2250,7 +2251,7 @@ u8 AtkCanceller_UnableToUseMove(void)
                 }
                 else
                 {
-                    BattleScriptPush(BattleScript_MoveUsedIsParalyzedCantAttack);
+                    BattleScriptPush(BattleScript_MoveUsedIsInLoveCantAttack);
                     gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
                     gProtectStructs[gBattlerAttacker].loveImmobility = 1;
                     CancelMultiTurnMoves(gBattlerAttacker);
@@ -2365,7 +2366,7 @@ u8 AtkCanceller_UnableToUseMove2(void)
             gBattleStruct->atkCancellerTracker++;
         case CANCELLER_PSYCHIC_TERRAIN:
             if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN
-                && IsBattlerGrounded(gBattlerAttacker)
+                && IsBattlerGrounded(gBattlerTarget)
                 && GetChosenMovePriority(gBattlerAttacker) > 0
                 && GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gBattlerTarget))
             {
@@ -3258,6 +3259,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u8 ability, u8 special, u16 moveA
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
              && (gBattleMoves[move].flags & FLAG_MAKES_CONTACT)
+             && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS)
+             && GetBattlerAbility(gBattlerAttacker) != ABILITY_OVERCOAT
+             && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOOGLES
              && (Random() % 10) == 0)
             {
                 do
@@ -5180,7 +5184,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     case EFFECT_BULLDOZE:
     case EFFECT_MAGNITUDE:
     case EFFECT_EARTHQUAKE:
-        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && IsBattlerGrounded(battlerDef))
+        if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && !(gStatuses3[battlerDef] & STATUS3_SEMI_INVULNERABLE))
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case EFFECT_KNOCK_OFF:
@@ -5196,13 +5200,13 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         MulModifier(&modifier, UQ_4_12(2.0));
     if (gStatuses3[battlerAtk] & STATUS3_ME_FIRST)
         MulModifier(&modifier, UQ_4_12(1.5));
-    if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && moveType == TYPE_GRASS && IsBattlerGrounded(battlerAtk))
+    if (gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN && moveType == TYPE_GRASS && IsBattlerGrounded(battlerAtk) && !(gStatuses3[battlerAtk] & STATUS3_SEMI_INVULNERABLE))
         MulModifier(&modifier, UQ_4_12(1.5));
-    if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN && moveType == TYPE_DRAGON && IsBattlerGrounded(battlerDef))
+    if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN && moveType == TYPE_DRAGON && IsBattlerGrounded(battlerDef) && !(gStatuses3[battlerDef] & STATUS3_SEMI_INVULNERABLE))
         MulModifier(&modifier, UQ_4_12(0.5));
-    if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && moveType == TYPE_ELECTRIC && IsBattlerGrounded(battlerAtk))
+    if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && moveType == TYPE_ELECTRIC && IsBattlerGrounded(battlerAtk) && !(gStatuses3[battlerAtk] & STATUS3_SEMI_INVULNERABLE))
         MulModifier(&modifier, UQ_4_12(1.5));
-    if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN && moveType == TYPE_PSYCHIC && IsBattlerGrounded(battlerAtk))
+    if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN && moveType == TYPE_PSYCHIC && IsBattlerGrounded(battlerAtk) && !(gStatuses3[battlerAtk] & STATUS3_SEMI_INVULNERABLE))
         MulModifier(&modifier, UQ_4_12(1.5));
 
     return ApplyModifier(modifier, basePower);
@@ -5881,12 +5885,22 @@ void UndoMegaEvolution(u8 monId)
 
 bool32 DoBattlersShareType(u32 battler1, u32 battler2)
 {
-    if (gBattleMons[battler1].type1 == gBattleMons[battler2].type1 || gBattleMons[battler1].type1 == gBattleMons[battler2].type2)
-        return TRUE;
-    else if (gBattleMons[battler1].type2 == gBattleMons[battler2].type1 || gBattleMons[battler1].type2 == gBattleMons[battler2].type2)
-        return TRUE;
-    else
-        return FALSE;
+    s32 i;
+    u8 types1[3] = {gBattleMons[battler1].type1, gBattleMons[battler1].type2, gBattleMons[battler1].type3};
+    u8 types2[3] = {gBattleMons[battler2].type1, gBattleMons[battler2].type2, gBattleMons[battler2].type3};
+
+    if (types1[2] == TYPE_MYSTERY)
+        types1[2] = types1[0];
+    if (types2[2] == TYPE_MYSTERY)
+        types2[2] = types2[0];
+
+    for (i = 0; i < 3; i++)
+    {
+        if (types1[i] == types2[0] || types1[i] == types2[1] || types1[i] == types2[2])
+            return TRUE;
+    }
+
+    return FALSE;
 }
 
 bool32 CanBattlerGetOrLoseItem(u8 battlerId, u16 itemId)

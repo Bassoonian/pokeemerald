@@ -295,7 +295,7 @@ static void atkD7_setyawn(void);
 static void atkD8_setdamagetohealthdifference(void);
 static void atkD9_setroom(void);
 static void atkDA_tryswapabilities(void);
-static void atkDB_tryimprision(void);
+static void atkDB_tryimprison(void);
 static void atkDC_setstealthrock(void);
 static void atkDD_setuserstatus3(void);
 static void atkDE_asistattackselect(void);
@@ -554,7 +554,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     atkD8_setdamagetohealthdifference,
     atkD9_setroom,
     atkDA_tryswapabilities,
-    atkDB_tryimprision,
+    atkDB_tryimprison,
     atkDC_setstealthrock,
     atkDD_setuserstatus3,
     atkDE_asistattackselect,
@@ -2782,6 +2782,10 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gBattlescriptCurrInstr = BattleScript_SpectralThiefSteal;
                 }
                 break;
+            case MOVE_EFFECT_V_CREATE:
+                BattleScriptPush(gBattlescriptCurrInstr + 1);
+                gBattlescriptCurrInstr = BattleScript_VCreateStatLoss;
+                break;
             }
         }
     }
@@ -4040,18 +4044,27 @@ static void atk47_setgraphicalstatchangevalues(void)
 
 static void atk48_playstatchangeanimation(void)
 {
+    u32 ability;
     u32 currStat = 0;
-    u16 statAnimId = 0;
-    s32 changeableStatsCount = 0;
-    u8 statsToCheck = 0;
+    u32 statAnimId = 0;
+    u32 changeableStatsCount = 0;
+    u32 statsToCheck = 0;
+    u32 startingStatAnimId = 0;
+    u32 flags = gBattlescriptCurrInstr[3];
 
     gActiveBattler = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
+    ability = GetBattlerAbility(gActiveBattler);
     statsToCheck = gBattlescriptCurrInstr[2];
 
-    if (gBattlescriptCurrInstr[3] & ATK48_STAT_NEGATIVE) // goes down
+    // Handle Contrary and Simple
+    if (ability == ABILITY_CONTRARY)
+        flags ^= ATK48_STAT_NEGATIVE;
+    else if (ability == ABILITY_SIMPLE)
+        flags |= ATK48_STAT_BY_TWO;
+
+    if (flags & ATK48_STAT_NEGATIVE) // goes down
     {
-        s16 startingStatAnimId;
-        if (gBattlescriptCurrInstr[3] & ATK48_STAT_BY_TWO)
+        if (flags & ATK48_STAT_BY_TWO)
             startingStatAnimId = STAT_ANIM_MINUS2 - 1;
         else
             startingStatAnimId = STAT_ANIM_MINUS1 - 1;
@@ -4060,7 +4073,7 @@ static void atk48_playstatchangeanimation(void)
         {
             if (statsToCheck & 1)
             {
-                if (gBattlescriptCurrInstr[3] & ATK48_DONT_CHECK_LOWER)
+                if (flags & ATK48_DONT_CHECK_LOWER)
                 {
                     if (gBattleMons[gActiveBattler].statStages[currStat] > 0)
                     {
@@ -4069,10 +4082,10 @@ static void atk48_playstatchangeanimation(void)
                     }
                 }
                 else if (!gSideTimers[GET_BATTLER_SIDE(gActiveBattler)].mistTimer
-                        && gBattleMons[gActiveBattler].ability != ABILITY_CLEAR_BODY
-                        && gBattleMons[gActiveBattler].ability != ABILITY_WHITE_SMOKE
-                        && !(gBattleMons[gActiveBattler].ability == ABILITY_KEEN_EYE && currStat == STAT_ACC)
-                        && !(gBattleMons[gActiveBattler].ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK))
+                        && ability != ABILITY_CLEAR_BODY
+                        && ability != ABILITY_WHITE_SMOKE
+                        && !(ability == ABILITY_KEEN_EYE && currStat == STAT_ACC)
+                        && !(ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK))
                 {
                     if (gBattleMons[gActiveBattler].statStages[currStat] > 0)
                     {
@@ -4086,7 +4099,7 @@ static void atk48_playstatchangeanimation(void)
 
         if (changeableStatsCount > 1) // more than one stat, so the color is gray
         {
-            if (gBattlescriptCurrInstr[3] & ATK48_STAT_BY_TWO)
+            if (flags & ATK48_STAT_BY_TWO)
                 statAnimId = STAT_ANIM_MULTIPLE_MINUS2;
             else
                 statAnimId = STAT_ANIM_MULTIPLE_MINUS1;
@@ -4094,8 +4107,7 @@ static void atk48_playstatchangeanimation(void)
     }
     else // goes up
     {
-        s16 startingStatAnimId;
-        if (gBattlescriptCurrInstr[3] & ATK48_STAT_BY_TWO)
+        if (flags & ATK48_STAT_BY_TWO)
             startingStatAnimId = STAT_ANIM_PLUS2 - 1;
         else
             startingStatAnimId = STAT_ANIM_PLUS1 - 1;
@@ -4112,14 +4124,14 @@ static void atk48_playstatchangeanimation(void)
 
         if (changeableStatsCount > 1) // more than one stat, so the color is gray
         {
-            if (gBattlescriptCurrInstr[3] & ATK48_STAT_BY_TWO)
+            if (flags & ATK48_STAT_BY_TWO)
                 statAnimId = STAT_ANIM_MULTIPLE_PLUS2;
             else
                 statAnimId = STAT_ANIM_MULTIPLE_PLUS1;
         }
     }
 
-    if (gBattlescriptCurrInstr[3] & ATK48_ONLY_MULTIPLE && changeableStatsCount < 2)
+    if (flags & ATK48_ONLY_MULTIPLE && changeableStatsCount < 2)
     {
         gBattlescriptCurrInstr += 4;
     }
@@ -4127,7 +4139,7 @@ static void atk48_playstatchangeanimation(void)
     {
         BtlController_EmitBattleAnimation(0, B_ANIM_STATS_CHANGE, statAnimId);
         MarkBattlerForControllerExec(gActiveBattler);
-        if (gBattlescriptCurrInstr[3] & ATK48_ONLY_MULTIPLE && changeableStatsCount > 1)
+        if (flags & ATK48_ONLY_MULTIPLE && changeableStatsCount > 1)
             gBattleScripting.statAnimPlayed = TRUE;
         gBattlescriptCurrInstr += 4;
     }
@@ -6368,6 +6380,39 @@ static void atk76_various(void)
 
     switch (gBattlescriptCurrInstr[2])
     {
+    // Roar will fail in a double wild battle when used by the player against one of the two alive wild mons.
+    // Also when an opposing wild mon uses it againt its partner.
+    case VARIOUS_JUMP_IF_ROAR_FAILS:
+        if (WILD_DOUBLE_BATTLE
+            && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
+            && GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT
+            && IS_WHOLE_SIDE_ALIVE(gBattlerTarget))
+            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
+        else if (WILD_DOUBLE_BATTLE
+                 && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
+                 && GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)
+            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
+        else
+            gBattlescriptCurrInstr += 7;
+        return;
+    case VARIOUS_CHECK_IF_GRASSY_TERRAIN_HEALS:
+        if ((gStatuses3[gActiveBattler] & (STATUS3_SEMI_INVULNERABLE))
+            || BATTLER_MAX_HP(gActiveBattler)
+            || !gBattleMons[gActiveBattler].hp
+            || !(IsBattlerGrounded(gActiveBattler)))
+        {
+            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
+        }
+        else
+        {
+            gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 16;
+            if (gBattleMoveDamage == 0)
+                gBattleMoveDamage = 1;
+            gBattleMoveDamage *= -1;
+
+            gBattlescriptCurrInstr += 7;
+        }
+        return;
     case VARIOUS_GRAVITY_ON_AIRBORNE_MONS:
         if (gStatuses3[gActiveBattler] & STATUS3_ON_AIR)
             CancelMultiTurnMoves(gActiveBattler);
@@ -7945,9 +7990,14 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
 
 static void atk89_statbuffchange(void)
 {
+    u16 flags = T1_READ_16(gBattlescriptCurrInstr + 1);
+    const u8 *ptrBefore = gBattlescriptCurrInstr;
     const u8 *jumpPtr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
-    if (ChangeStatBuffs(GET_STAT_BUFF_VALUE_WITH_SIGN(gBattleScripting.statChanger), GET_STAT_BUFF_ID(gBattleScripting.statChanger), T1_READ_16(gBattlescriptCurrInstr + 1), jumpPtr) == STAT_CHANGE_WORKED)
+
+    if (ChangeStatBuffs(GET_STAT_BUFF_VALUE_WITH_SIGN(gBattleScripting.statChanger), GET_STAT_BUFF_ID(gBattleScripting.statChanger), flags, jumpPtr) == STAT_CHANGE_WORKED)
         gBattlescriptCurrInstr += 7;
+    else if (gBattlescriptCurrInstr == ptrBefore) // Prevent infinite looping.
+        gBattlescriptCurrInstr = jumpPtr;
 }
 
 static void atk8A_normalisebuffs(void) // haze
@@ -8009,27 +8059,6 @@ static void atk8E_initmultihitstring(void)
     gBattlescriptCurrInstr++;
 }
 
-static bool8 TryDoForceSwitchOut(void)
-{
-    if (gBattleMons[gBattlerAttacker].level >= gBattleMons[gBattlerTarget].level)
-    {
-        *(gBattleStruct->field_58 + gBattlerTarget) = gBattlerPartyIndexes[gBattlerTarget];
-    }
-    else
-    {
-        u16 random = Random() & 0xFF;
-        if ((u32)((random * (gBattleMons[gBattlerAttacker].level + gBattleMons[gBattlerTarget].level) >> 8) + 1) <= (gBattleMons[gBattlerTarget].level / 4))
-        {
-            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
-            return FALSE;
-        }
-        *(gBattleStruct->field_58 + gBattlerTarget) = gBattlerPartyIndexes[gBattlerTarget];
-    }
-
-    gBattlescriptCurrInstr = BattleScript_SuccessForceOut;
-    return TRUE;
-}
-
 static void atk8F_forcerandomswitch(void)
 {
     s32 i;
@@ -8042,14 +8071,26 @@ static void atk8F_forcerandomswitch(void)
     s32 validMons = 0;
     s32 minNeeded = 0;
 
-    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER))
+    // Swapping pokemon happens in:
+    // trainer battles
+    // wild double battles when an opposing pokemon uses it against one of the two alive player mons
+    // wild double battle when a player pokemon uses it against its partner
+    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+        || (WILD_DOUBLE_BATTLE
+            && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
+            && GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER
+            && IS_WHOLE_SIDE_ALIVE(gBattlerTarget))
+        || (WILD_DOUBLE_BATTLE
+            && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
+            && GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
+       )
     {
         if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
             party = gPlayerParty;
         else
             party = gEnemyParty;
 
-        if (BATTLE_TWO_VS_ONE_OPPONENT && (gBattlerTarget & BIT_SIDE) == B_SIDE_OPPONENT)
+        if (BATTLE_TWO_VS_ONE_OPPONENT && GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)
         {
             firstMonId = 0;
             lastMonId = 6;
@@ -8157,19 +8198,20 @@ static void atk8F_forcerandomswitch(void)
         }
         else
         {
-            if (TryDoForceSwitchOut())
+            *(gBattleStruct->field_58 + gBattlerTarget) = gBattlerPartyIndexes[gBattlerTarget];
+            gBattlescriptCurrInstr = BattleScript_RoarSuccessSwitch;
+
+            do
             {
-                do
-                {
-                    i = Random() % monsCount;
-                    i += firstMonId;
-                }
-                while (i == battler2PartyId
-                       || i == battler1PartyId
-                       || GetMonData(&party[i], MON_DATA_SPECIES) == SPECIES_NONE
-                       || GetMonData(&party[i], MON_DATA_IS_EGG) == TRUE
-                       || GetMonData(&party[i], MON_DATA_HP) == 0);
+                i = Random() % monsCount;
+                i += firstMonId;
             }
+            while (i == battler2PartyId
+                   || i == battler1PartyId
+                   || GetMonData(&party[i], MON_DATA_SPECIES) == SPECIES_NONE
+                   || GetMonData(&party[i], MON_DATA_IS_EGG) == TRUE
+                   || GetMonData(&party[i], MON_DATA_HP) == 0);
+
             *(gBattleStruct->monToSwitchIntoId + gBattlerTarget) = i;
 
             if (!IsMultiBattle())
@@ -8190,7 +8232,11 @@ static void atk8F_forcerandomswitch(void)
     }
     else
     {
-        TryDoForceSwitchOut();
+        // In normal wild doubles, Roar will always fail if the user's level is less than the target's.
+        if (gBattleMons[gBattlerAttacker].level >= gBattleMons[gBattlerTarget].level)
+            gBattlescriptCurrInstr = BattleScript_RoarSuccessEndBattle;
+        else
+            gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
     }
 }
 
@@ -8424,7 +8470,8 @@ static void atk96_weatherdamage(void)
                 && ability != ABILITY_SAND_RUSH
                 && ability != ABILITY_OVERCOAT
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
+                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER)
+                && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOOGLES)
             {
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
@@ -8453,7 +8500,8 @@ static void atk96_weatherdamage(void)
                 && ability != ABILITY_OVERCOAT
                 && ability != ABILITY_ICE_BODY
                 && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERGROUND)
-                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER))
+                && !(gStatuses3[gBattlerAttacker] & STATUS3_UNDERWATER)
+                && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOOGLES)
             {
                 gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
                 if (gBattleMoveDamage == 0)
@@ -10197,7 +10245,7 @@ static void atkDA_tryswapabilities(void) // skill swap
     }
 }
 
-static void atkDB_tryimprision(void)
+static void atkDB_tryimprison(void)
 {
     if ((gStatuses3[gBattlerAttacker] & STATUS3_IMPRISONED_OTHERS))
     {
@@ -10208,7 +10256,7 @@ static void atkDB_tryimprision(void)
         u8 battlerId, sideAttacker;
 
         sideAttacker = GetBattlerSide(gBattlerAttacker);
-        PressurePPLoseOnUsingImprision(gBattlerAttacker);
+        PressurePPLoseOnUsingImprison(gBattlerAttacker);
         for (battlerId = 0; battlerId < gBattlersCount; battlerId++)
         {
             if (sideAttacker != GetBattlerSide(battlerId))
