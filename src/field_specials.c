@@ -1431,14 +1431,16 @@ void SetShoalItemFlag(u16 v0)
 void PutZigzagoonInPlayerParty(void)
 {
     u16 monData;
-    CreateMon(&gPlayerParty[0], SPECIES_ZIGZAGOON, 7, 0x20, FALSE, 0, FALSE, 0);
+    CreateMon(&gPlayerParty[0], SPECIES_SUDOWOODO, 52, 0x20, FALSE, 0, FALSE, 0);
     monData = TRUE;
     SetMonData(&gPlayerParty[0], MON_DATA_ALT_ABILITY, &monData);
-    monData = MOVE_TACKLE;
+    monData = MOVE_FALSE_SWIPE;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE1, &monData);
-    monData = MOVE_NONE;
+    monData = MOVE_PSYCHO_CUT;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE2, &monData);
+    monData = MOVE_SWORDS_DANCE;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE3, &monData);
+    monData = MOVE_CLOSE_COMBAT;
     SetMonData(&gPlayerParty[0], MON_DATA_MOVE4, &monData);
 }
 

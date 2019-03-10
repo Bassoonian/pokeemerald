@@ -1012,14 +1012,14 @@ LittlerootTown_Text_1E8D07: @ 81E8D07
 	.string "Good luck!$"
 
 LittlerootTown_Text_1E8D32: @ 81E8D32
-	.string "LITTLEROOT TOWN\n"
+	.string "Turpia Town\n"
 	.string "“A town that can't be shaded any hue.”$"
 
 LittlerootTown_Text_1E8D69: @ 81E8D69
 	.string "PROF. BIRCH'S POKéMON LAB$"
 
 LittlerootTown_Text_1E8D83: @ 81E8D83
-	.string "{PLAYER}'s HOUSE$"
+	.string "{PLAYER}'s house$"
 
 LittlerootTown_Text_1E8D8E: @ 81E8D8E
 	.string "PROF. BIRCH'S HOUSE$"

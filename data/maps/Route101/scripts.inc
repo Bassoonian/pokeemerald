@@ -296,6 +296,6 @@ Route101_Text_1EC04A: @ 81EC04A
 	.string "to go into the tall grass and search.$"
 
 Route101_Text_1EC0C8: @ 81EC0C8
-	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "Route 601\n"
+	.string "{LEFT_ARROW} Borago City$"
 
