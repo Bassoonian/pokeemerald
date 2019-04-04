@@ -6,24 +6,24 @@ LittlerootTown_MapScripts:: @ 81E7DCB
 
 LittlerootTown_MapScript1_1E7DDB: @ 81E7DDB
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
-	call Common_EventScript_SetupRivalGender
-	compare VAR_LITTLEROOT_INTRO_STATE, 2
-	call_if_eq LittlerootTown_EventScript_1E7E67
-	call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_1E7E6F
-	compare VAR_0x4050, 3
-	call_if_eq LittlerootTown_EventScript_1E7E92
-	compare VAR_LITTLEROOT_HOUSES_STATE, 4
-	call_if_eq LittlerootTown_EventScript_1E7E5C
-	compare VAR_LITTLEROOT_HOUSES_STATE_2, 4
-	call_if_eq LittlerootTown_EventScript_1E7E5C
-	compare VAR_OLDALE_STATE, 1
-	call_if_eq LittlerootTown_EventScript_1E7E53
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	call_if_eq LittlerootTown_EventScript_1E7E4F
-	compare VAR_0x40D3, 1
-	call_if_eq LittlerootTown_EventScript_1E7E4B
-	compare VAR_0x40D3, 2
-	call_if_eq LittlerootTown_EventScript_1E7E45
+	@ call Common_EventScript_SetupRivalGender
+	@ compare VAR_LITTLEROOT_INTRO_STATE, 2
+	@ call_if_eq LittlerootTown_EventScript_1E7E67
+	@ call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_1E7E6F
+	@ compare VAR_0x4050, 3
+	@ call_if_eq LittlerootTown_EventScript_1E7E92
+	@ compare VAR_LITTLEROOT_HOUSES_STATE, 4
+	@ call_if_eq LittlerootTown_EventScript_1E7E5C
+	@ compare VAR_LITTLEROOT_HOUSES_STATE_2, 4
+	@ call_if_eq LittlerootTown_EventScript_1E7E5C
+	@ compare VAR_OLDALE_STATE, 1
+	@ call_if_eq LittlerootTown_EventScript_1E7E53
+	@ compare VAR_LITTLEROOT_RIVAL_STATE, 3
+	@ call_if_eq LittlerootTown_EventScript_1E7E4F
+	@ compare VAR_0x40D3, 1
+	@ call_if_eq LittlerootTown_EventScript_1E7E4B
+	@ compare VAR_0x40D3, 2
+	@ call_if_eq LittlerootTown_EventScript_1E7E45
 	end
 
 LittlerootTown_EventScript_1E7E45:: @ 81E7E45
@@ -83,9 +83,9 @@ LittlerootTown_EventScript_1E7EB9:: @ 81E7EB9
 	return
 
 LittlerootTown_MapScript2_1E7EC1: @ 81E7EC1
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_EventScript_1E7EDB
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_1E7EF9
-	map_script_2 VAR_0x40D3, 1, LittlerootTown_EventScript_1E7FB1
+	@ map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_EventScript_1E7EDB
+	@ map_script_2 VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_1E7EF9
+	@ map_script_2 VAR_0x40D3, 1, LittlerootTown_EventScript_1E7FB1
 	.2byte 0
 
 LittlerootTown_EventScript_1E7EDB:: @ 81E7EDB
@@ -201,7 +201,7 @@ LittlerootTown_EventScript_1E7FB1:: @ 81E7FB1
 	end
 
 LittlerootTown_MapScript2_1E7FE2: @ 81E7FE2
-	map_script_2 VAR_0x40D3, 1, LittlerootTown_EventScript_1E7FEC
+	@ map_script_2 VAR_0x40D3, 1, LittlerootTown_EventScript_1E7FEC
 	.2byte 0
 
 LittlerootTown_EventScript_1E7FEC:: @ 81E7FEC
@@ -1013,7 +1013,7 @@ LittlerootTown_Text_1E8D07: @ 81E8D07
 
 LittlerootTown_Text_1E8D32: @ 81E8D32
 	.string "Turpia Town\n"
-	.string "“A town that can't be shaded any hue.”$"
+	.string "“Blossoms of a new start.”$"
 
 LittlerootTown_Text_1E8D69: @ 81E8D69
 	.string "PROF. BIRCH'S POKéMON LAB$"
@@ -1022,7 +1022,7 @@ LittlerootTown_Text_1E8D83: @ 81E8D83
 	.string "{PLAYER}'s house$"
 
 LittlerootTown_Text_1E8D8E: @ 81E8D8E
-	.string "PROF. BIRCH'S HOUSE$"
+	.string "{RIVAL}'s house$"
 
 LittlerootTown_Text_1E8DA2: @ 81E8DA2
 	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"
@@ -1034,4 +1034,3 @@ LittlerootTown_Text_1E8DA2: @ 81E8DA2
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
-

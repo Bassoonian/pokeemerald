@@ -395,22 +395,22 @@ const u8 gAlakazamPokedexText[] = _(
     "move its body.");
 
 const u8 gMachopPokedexText[] = _(
-    "It continually undertakes strenuous\n"
-    "training to master all forms of martial\n"
-    "arts. Its strength lets it easily hoist\n"
-    "a sumo wrestler onto its shoulders.");
+    "It fights by swinging a piece of lumber\n"
+    "around. It is close to evolving when it\n"
+    "can handle the lumber without difficulty.\n"
+    "The logs it carries are always square.");
 
 const u8 gMachokePokedexText[] = _(
-    "A belt is worn by a MACHOKE to keep its\n"
-    "overwhelming power under control.\n"
-    "Because it is so dangerous, no one has\n"
-    "ever removed the belt.");
+    "This Pokémon is so muscular and strongly\n"
+    "built that even a group of wrestlers.\n"
+    "could not make it budge an inch. They\n"
+    "skillfully wield steal beams.");
 
 const u8 gMachampPokedexText[] = _(
-    "It is impossible to defend against punches\n"
-    "and chops doled out by its four arms.\n"
-    "Its fighting spirit flares up when it faces\n"
-    "a tough opponent.");
+    "It is thought that Conkeldurr taught humans\n"
+    "how to make concrete more than 2,000 years ago.\n"
+    "They know moves than enable them to swing the\n"
+    "pillars freely in battle.");
 
 const u8 gBellsproutPokedexText[] = _(
     "A BELLSPROUT's thin and flexible body lets\n"
@@ -527,16 +527,16 @@ const u8 gDewgongPokedexText[] = _(
     "a mermaid by a mariner long ago.");
 
 const u8 gGrimerPokedexText[] = _(
-    "Born from polluted sludge in the sea,\n"
-    "GRIMER's favorite food is anything filthy.\n"
-    "They feed on wastewater pumped out from\n"
-    "factories.");
+    "Inflating its poison sacs, it fills the area\n"
+    "with an odd sound and hits flinching\n"
+    "opponents with a poison jab. It is popular\n"
+    "as a mascot.");
 
 const u8 gMukPokedexText[] = _(
-    "It prefers warm and humid habitats.\n"
-    "In the summertime, the toxic substances\n"
-    "in its body intensify, making MUK reek like\n"
-    "putrid kitchen garbage.");
+    "The croaking that Toxicroak produces before\n"
+    "a battle is for churning the poison it has\n"
+    "stored in its poison sac. It weaves its\n"
+    "flexible body in close, then lunges out.");
 
 const u8 gShellderPokedexText[] = _(
     "At night, it burrows a hole in the seafloor\n"
@@ -989,28 +989,28 @@ const u8 gNoctowlPokedexText[] = _(
     "light, and to their supple and silent wings.");
 
 const u8 gLedybaPokedexText[] = _(
-    "LEDYBA communicate using a fluid that\n"
-    "they secrete from where the legs join the\n"
-    "body. They are said to convey feelings to\n"
-    "others by altering the fluid's scent.");
+    "Its legs are short. Whenever it stumbles,\n"
+    "its stiff antennae clack with a xylophone-\n"
+    "like sound. These sounds are fall\n"
+    "hallmarks.");
 
 const u8 gLedianPokedexText[] = _(
-    "It is said that in lands with clean air,\n"
-    "where the stars fill the sky, there live\n"
-    "many LEDIAN. For good reason, they use\n"
-    "the light of the stars as energy.");
+    "It crosses its knifelike arms in front of\n"
+    "its chest when it cries. It can compose\n"
+    "melodies ad lib. Scientists are studying\n"
+    "its melodic patterns.");
 
 const u8 gSpinarakPokedexText[] = _(
-    "The web it spins can be considered its\n"
-    "second nervous system. It is said that a\n"
-    "SPINARAK determines its prey by the tiny\n"
-    "vibrations it feels through the web.");
+    "When it finds a stone of suitable size, it\n"
+    "secretes a liquid from its mouth to open up\n"
+    "a hole to crawl into. If that rock breaks, it\n"
+    "remains agitated until it finds a replacement.");
 
 const u8 gAriadosPokedexText[] = _(
-    "Its feet are tipped with tiny hooked claws\n"
-    "that enable it to scuttle on ceilings and\n"
-    "vertical walls. It constricts its foe with\n"
-    "thin and strong silk webbing.");
+    "It possesses legs of enormous strength,\n"
+    "enabling it to carry heavy slabs for many\n"
+    "days, even when crossing arid land. Competing\n"
+    "for territory, Crustle fight viciously.");
 
 const u8 gCrobatPokedexText[] = _(
     "Over the course of evolution, its hind legs\n"
@@ -1721,22 +1721,22 @@ const u8 gBreloomPokedexText[] = _(
     "fields and forests.");
 
 const u8 gSlakothPokedexText[] = _(
-    "It sleeps virtually all day and night long.\n"
-    "It doesn't change its nest its entire life,\n"
-    "but it sometimes travels great distances\n"
-    "by swimming in rivers.");
+    "The long hair around its face provides an\n"
+    "amazing radar that lets it sense  subtle\n"
+    "changes in its surroundings. It faces\n"
+    "strong opponents with great courage.");
 
 const u8 gVigorothPokedexText[] = _(
-    "It can't keep still because its blood boils\n"
-    "with energy. It runs through the fields\n"
-    "and mountains all day to calm itself. If it\n"
-    "doesn't, it can't sleep at night.");
+    "The high cost of keeping its hard fur\n"
+    "properly groomed makes this a troublesome\n"
+    "Pokémon to train. However, it loyally\n"
+    "follows its Trainer's orders.");
 
 const u8 gSlakingPokedexText[] = _(
-    "Hordes of SLAKING gather around trees\n"
-    "when fruits come into season. They wait\n"
-    "around patiently for ripened fruits to fall\n"
-    "out of the trees.");
+    "Being wrapped in its long fur is so\n"
+    "comfortable that a person would be fine\n"
+    "even overnight on a wintry mountain. Some\n"
+    "parents even trust it to babysit.");
 
 const u8 gNincadaPokedexText[] = _(
     "It makes its nest at the roots of a mighty\n"
@@ -1841,16 +1841,16 @@ const u8 gAggronPokedexText[] = _(
     "worn with pride as mementos from battles.");
 
 const u8 gMedititePokedexText[] = _(
-    "It continually meditates for hours every\n"
-    "day. As a result of rigorous and dedicated\n"
-    "yoga training, it has tempered its\n"
-    "spiritual power so much it can fly.");
+    "They seclude themselves in the mountains\n"
+    "and devote themselves to training. The forms\n"
+    "of their kicks and chops differ from\n"
+    "pack to pack.");
 
 const u8 gMedichamPokedexText[] = _(
-    "Through crushingly harsh yoga training, it\n"
-    "gained the power to foretell its foe's\n"
-    "actions. It battles with elegant, dance-\n"
-    "like movement.");
+    "When Mienshao lets out a bizarre wail,\n"
+    "you're in danger. Its arm attacks come\n"
+    "with such rapidity that they cannot\n"
+    "even be seen.");
 
 const u8 gElectrikePokedexText[] = _(
     "It generates electricity using friction\n"

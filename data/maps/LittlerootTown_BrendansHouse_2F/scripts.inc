@@ -4,14 +4,19 @@ LittlerootTown_BrendansHouse_2F_MapScripts:: @ 81F83E3
 	.byte 0
 
 LittlerootTown_BrendansHouse_2F_MapScript1_1F83EE: @ 81F83EE
-	compare VAR_LITTLEROOT_RIVAL_STATE, 2
-	call_if_lt LittlerootTown_BrendansHouse_2F_EventScript_1F8457
-	compare VAR_LITTLEROOT_RIVAL_STATE, 3
-	call_if_ge LittlerootTown_BrendansHouse_2F_EventScript_1F841A
-	compare VAR_LITTLEROOT_INTRO_STATE, 4
-	call_if_eq LittlerootTown_BrendansHouse_2F_EventScript_2926FE
-	call LittlerootTown_BrendansHouse_2F_EventScript_275CE1
-	setvar VAR_SECRET_BASE_INITIALIZED, 0
+	@ compare VAR_LITTLEROOT_RIVAL_STATE, 2
+	@ call_if_lt LittlerootTown_BrendansHouse_2F_EventScript_1F8457
+	@ compare VAR_LITTLEROOT_RIVAL_STATE, 3
+	@ call_if_ge LittlerootTown_BrendansHouse_2F_EventScript_1F841A
+	@ compare VAR_LITTLEROOT_INTRO_STATE, 4
+	@ call_if_eq LittlerootTown_BrendansHouse_2F_EventScript_2926FE
+	call LittlerootTown_BrendansHouse_2F_EventScript_275CE1 @Fixes decorations
+	@ setvar VAR_SECRET_BASE_INITIALIZED, 0
+	end
+
+LittlerootTown_initvar::
+	setvar 0x4050, 1
+	setflag FLAG_SYS_TV_HOME @Kill the flashing TV
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_1F841A:: @ 81F841A
@@ -44,7 +49,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_1F8464:: @ 81F8464
 	return
 
 LittlerootTown_BrendansHouse_2F_MapScript2_1F846A: @ 81F846A
-	map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, LittlerootTown_BrendansHouse_2F_EventScript_1F8474
+	@ map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, LittlerootTown_BrendansHouse_2F_EventScript_1F8474
 	.2byte 0
 
 LittlerootTown_BrendansHouse_2F_EventScript_1F8474:: @ 81F8474

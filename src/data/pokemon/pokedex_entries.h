@@ -794,9 +794,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_MACHOP] =
     {
-        .categoryName = _("SUPERPOWER"),
-        .height = 8,
-        .weight = 195,
+        .categoryName = _("Muscular"),
+        .height = 6,
+        .weight = 125,
         .description = gMachopPokedexText,
         .pokemonScale = 342,
         .pokemonOffset = 14,
@@ -806,9 +806,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_MACHOKE] =
     {
-        .categoryName = _("SUPERPOWER"),
-        .height = 15,
-        .weight = 705,
+        .categoryName = _("Muscular"),
+        .height = 12,
+        .weight = 400,
         .description = gMachokePokedexText,
         .pokemonScale = 323,
         .pokemonOffset = 9,
@@ -818,9 +818,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_MACHAMP] =
     {
-        .categoryName = _("SUPERPOWER"),
-        .height = 16,
-        .weight = 1300,
+        .categoryName = _("Muscular"),
+        .height = 14,
+        .weight = 870,
         .description = gMachampPokedexText,
         .pokemonScale = 280,
         .pokemonOffset = 1,
@@ -1058,9 +1058,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_GRIMER] =
     {
-        .categoryName = _("SLUDGE"),
-        .height = 9,
-        .weight = 300,
+        .categoryName = _("Toxic Mouth"),
+        .height = 7,
+        .weight = 230,
         .description = gGrimerPokedexText,
         .pokemonScale = 258,
         .pokemonOffset = 10,
@@ -1070,9 +1070,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_MUK] =
     {
-        .categoryName = _("SLUDGE"),
-        .height = 12,
-        .weight = 300,
+        .categoryName = _("Toxic Mouth"),
+        .height = 13,
+        .weight = 444,
         .description = gMukPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 2,
@@ -1982,9 +1982,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_LEDYBA] =
     {
-        .categoryName = _("FIVE STAR"),
-        .height = 10,
-        .weight = 108,
+        .categoryName = _("Cricket"),
+        .height = 3,
+        .weight = 22,
         .description = gLedybaPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 4,
@@ -1994,9 +1994,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_LEDIAN] =
     {
-        .categoryName = _("FIVE STAR"),
-        .height = 14,
-        .weight = 356,
+        .categoryName = _("Cricket"),
+        .height = 10,
+        .weight = 255,
         .description = gLedianPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 2,
@@ -2006,9 +2006,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_SPINARAK] =
     {
-        .categoryName = _("STRING SPIT"),
-        .height = 5,
-        .weight = 85,
+        .categoryName = _("Rock Inn"),
+        .height = 3,
+        .weight = 145,
         .description = gSpinarakPokedexText,
         .pokemonScale = 414,
         .pokemonOffset = 21,
@@ -2018,9 +2018,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_ARIADOS] =
     {
-        .categoryName = _("LONG LEG"),
-        .height = 11,
-        .weight = 335,
+        .categoryName = _("Stone Home"),
+        .height = 14,
+        .weight = 2000,
         .description = gAriadosPokedexText,
         .pokemonScale = 316,
         .pokemonOffset = 8,
@@ -3446,9 +3446,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_SLAKOTH] =
     {
-        .categoryName = _("SLACKER"),
-        .height = 8,
-        .weight = 240,
+        .categoryName = _("Puppy"),
+        .height = 4,
+        .weight = 41,
         .description = gSlakothPokedexText,
         .pokemonScale = 291,
         .pokemonOffset = 16,
@@ -3458,9 +3458,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_VIGOROTH] =
     {
-        .categoryName = _("WILD MONKEY"),
-        .height = 14,
-        .weight = 465,
+        .categoryName = _("Loyal Dog"),
+        .height = 9,
+        .weight = 147,
         .description = gVigorothPokedexText,
         .pokemonScale = 301,
         .pokemonOffset = 2,
@@ -3470,9 +3470,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_SLAKING] =
     {
-        .categoryName = _("LAZY"),
-        .height = 20,
-        .weight = 1305,
+        .categoryName = _("Big-Hearted"),
+        .height = 12,
+        .weight = 610,
         .description = gSlakingPokedexText,
         .pokemonScale = 256,
         .pokemonOffset = 2,
@@ -3686,9 +3686,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_MEDITITE] =
     {
-        .categoryName = _("MEDITATE"),
-        .height = 6,
-        .weight = 112,
+        .categoryName = _("MartialArts"),
+        .height = 9,
+        .weight = 200,
         .description = gMedititePokedexText,
         .pokemonScale = 465,
         .pokemonOffset = 17,
@@ -3698,9 +3698,9 @@ const struct PokedexEntry gPokedexEntries[] =
 
     [NATIONAL_DEX_MEDICHAM] =
     {
-        .categoryName = _("MEDITATE"),
-        .height = 13,
-        .weight = 315,
+        .categoryName = _("MartialArts"),
+        .height = 14,
+        .weight = 355,
         .description = gMedichamPokedexText,
         .pokemonScale = 298,
         .pokemonOffset = 5,

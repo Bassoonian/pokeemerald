@@ -39,6 +39,15 @@
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 3,
+            "script": "LittlerootTown_initvar",
+            "type": "trigger",
+            "var": "VAR_0x4050",
+            "var_value": "0",
+            "x": 7,
+            "y": 2
+        }
     ],
     "id": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
     "layout": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
@@ -230,7 +239,7 @@
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,

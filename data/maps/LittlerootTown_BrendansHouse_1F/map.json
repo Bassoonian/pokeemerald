@@ -65,7 +65,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL",
             "graphics_id": "EVENT_OBJ_GFX_VIGOROTH_CARRYING_BOX",
             "movement_range_x": 3,
             "movement_range_y": 0,
@@ -78,7 +78,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL",
             "graphics_id": "EVENT_OBJ_GFX_VIGOROTH_FACING_AWAY",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -91,7 +91,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL",
             "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -117,7 +117,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING",
+            "flag": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL",
             "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
             "movement_range_x": 1,
             "movement_range_y": 1,

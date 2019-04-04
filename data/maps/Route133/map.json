@@ -9,12 +9,12 @@
         {
             "direction": "right",
             "map": "MAP_ROUTE104",
-            "offset": -17
+            "offset": -50
         },
         {
             "direction": "left",
             "map": "MAP_PETALBURG_CITY",
-            "offset": 3
+            "offset": 4
         }
     ],
     "coord_events": [

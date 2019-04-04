@@ -112,11 +112,12 @@ LittlerootTown_ProfessorBirchsLab_EventScript_1F9E07:: @ 81F9E07
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_1F9E17:: @ 81F9E17
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_1FA8F6, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_1F9E36
-	compare VAR_RESULT, 0
-	goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_1F9E48
+	@ msgbox LittlerootTown_ProfessorBirchsLab_Text_1FA8F6, MSGBOX_YESNO
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_1F9E36
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_1F9E48
+	call Route1_ProfD
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_1F9E36:: @ 81F9E36

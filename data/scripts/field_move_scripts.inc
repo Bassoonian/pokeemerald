@@ -57,8 +57,8 @@ Route103_EventScript_29072B:: @ 829072B
 
 Route103_Text_29072E: @ 829072E
 	.string "This tree looks like it can be\n"
-	.string "CUT down!\p"
-	.string "Would you like to CUT it?$"
+	.string "Cut down!\p"
+	.string "Would you like to Cut it?$"
 
 Route103_Text_290771: @ 8290771
 Route111_Text_290771: @ 8290771
@@ -66,7 +66,7 @@ Route111_Text_290771: @ 8290771
 
 Route103_Text_29077D: @ 829077D
 	.string "This tree looks like it can be\n"
-	.string "CUT down!$"
+	.string "Cut down!$"
 
 GraniteCave_B2F_EventScript_2907A6:: @ 82907A6
 MirageTower_3F_EventScript_2907A6:: @ 82907A6
@@ -141,10 +141,10 @@ Route111_EventScript_290837:: @ 8290837
 
 Route111_Text_29083A: @ 829083A
 	.string "This rock appears to be breakable.\n"
-	.string "Would you like to use ROCK SMASH?$"
+	.string "Would you like to use Rock Smash?$"
 
 Route111_Text_29087F: @ 829087F
-	.string "It's a rugged rock, but a POKéMON\n"
+	.string "It's a rugged rock, but a Pokémon\n"
 	.string "may be able to smash it.$"
 
 FieryPath_EventScript_2908BA:: @ 82908BA
@@ -202,21 +202,21 @@ FieryPath_EventScript_290929:: @ 8290929
 	end
 
 FieryPath_Text_29092C: @ 829092C
-	.string "It's a big boulder, but a POKéMON\n"
+	.string "It's a big boulder, but a Pokémon\n"
 	.string "may be able to push it aside.\p"
-	.string "Would you like to use STRENGTH?$"
+	.string "Would you like to use Strength?$"
 
 FieryPath_Text_29098C: @ 829098C
-	.string "{STR_VAR_1} used STRENGTH!\p"
-	.string "{STR_VAR_1}'s STRENGTH made it\n"
+	.string "{STR_VAR_1} used Strength!\p"
+	.string "{STR_VAR_1}'s Strength made it\n"
 	.string "possible to move boulders around!$"
 
 FieryPath_Text_2909D6: @ 82909D6
-	.string "It's a big boulder, but a POKéMON\n"
+	.string "It's a big boulder, but a Pokémon\n"
 	.string "may be able to push it aside.$"
 
 FieryPath_Text_290A16: @ 8290A16
-	.string "STRENGTH made it possible to move\n"
+	.string "Strength made it possible to move\n"
 	.string "boulders around.$"
 
 EventScript_UseWaterfall:: @ 8290A49
@@ -249,10 +249,10 @@ Text_290A8E: @ 8290A8E
 
 Text_290AC3: @ 8290AC3
 	.string "It's a large waterfall.\n"
-	.string "Would you like to use WATERFALL?$"
+	.string "Would you like to use Waterfall?$"
 
 Text_290AFC: @ 8290AFC
-	.string "{STR_VAR_1} used WATERFALL.$"
+	.string "{STR_VAR_1} used Waterfall.$"
 
 EventScript_UseDive:: @ 8290B0F
 	lockall
@@ -306,23 +306,23 @@ EventScript_290BA8:: @ 8290BA8
 	end
 
 Text_290BAA: @ 8290BAA
-	.string "The sea is deep here. A POKéMON\n"
+	.string "The sea is deep here. A Pokémon\n"
 	.string "may be able to go underwater.$"
 
 Text_290BE8: @ 8290BE8
 	.string "The sea is deep here.\n"
-	.string "Would you like to use DIVE?$"
+	.string "Would you like to use Dive?$"
 
 Text_290C1A: @ 8290C1A
-	.string "{STR_VAR_1} used DIVE.$"
+	.string "{STR_VAR_1} used Dive.$"
 
 Text_290C28: @ 8290C28
 	.string "Light is filtering down from above.\n"
-	.string "A POKéMON may be able to surface.$"
+	.string "A Pokémon may be able to surface.$"
 
 Text_290C6E: @ 8290C6E
 	.string "Light is filtering down from above.\n"
-	.string "Would you like to use DIVE?$"
+	.string "Would you like to use Dive?$"
 
 EventScript_290CAE:: @ 8290CAE
 	msgbox Text_290CB7, MSGBOX_SIGN

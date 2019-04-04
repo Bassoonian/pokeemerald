@@ -5,14 +5,15 @@ LittlerootTown_BrendansHouse_1F_MapScripts:: @ 81F7755
 	.byte 0
 
 LittlerootTown_BrendansHouse_1F_MapScript1_1F7765: @ 81F7765
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	call_if_lt LittlerootTown_BrendansHouse_1F_EventScript_1F777A
-	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_BrendansHouse_1F_EventScript_1F778D
+	@ compare VAR_LITTLEROOT_INTRO_STATE, 6
+	@ call_if_lt LittlerootTown_BrendansHouse_1F_EventScript_1F777A
+	@ call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_BrendansHouse_1F_EventScript_1F778D
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_1F777A:: @ 81F777A
-	setmetatile 5, 4, 624, 1
-	setmetatile 5, 2, 616, 1
+	@ disable the moving boxes
+	@ setmetatile 5, 4, 624, 1
+	@ setmetatile 5, 2, 616, 1
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_1F778D:: @ 81F778D
@@ -26,12 +27,12 @@ LittlerootTown_BrendansHouse_1F_EventScript_1F779A:: @ 81F779A
 	return
 
 LittlerootTown_BrendansHouse_1F_MapScript1_1F77A4: @ 81F77A4
-	compare VAR_LITTLEROOT_INTRO_STATE, 3
-	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_1F77DE
-	compare VAR_LITTLEROOT_INTRO_STATE, 5
-	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_1F77C6
-	compare VAR_LITTLEROOT_INTRO_STATE, 6
-	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_1F77D2
+	@compare VAR_LITTLEROOT_INTRO_STATE, 3
+	@call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_1F77DE
+	@compare VAR_LITTLEROOT_INTRO_STATE, 5
+	@call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_1F77C6
+	@compare VAR_LITTLEROOT_INTRO_STATE, 6
+	@call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_1F77D2
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_1F77C6:: @ 81F77C6
@@ -50,12 +51,59 @@ LittlerootTown_BrendansHouse_1F_EventScript_1F77DE:: @ 81F77DE
 	return
 
 LittlerootTown_BrendansHouse_1F_MapScript2_1F77EA: @ 81F77EA
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_1F783C
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_1F7814
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_1F784D
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE, 1, LittlerootTown_BrendansHouse_1F_EventScript_1F785E
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_292AF2
+	map_script_2 VAR_0x4050, 1, LittlerootTown_MoveMom
+	@map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_1F783C
+	@map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_1F7814
+	@map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_1F784D
+	@map_script_2 VAR_LITTLEROOT_HOUSES_STATE, 1, LittlerootTown_BrendansHouse_1F_EventScript_1F785E
+	@map_script_2 VAR_LITTLEROOT_HOUSES_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_292AF2
 	.2byte 0
+
+LittlerootTown_MoveMom:
+	lockall
+	applymovement 1, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement 1, Common_Movement_Delay48
+	waitmovement 0
+	applymovement 1, LittlerootTown_MomMov1
+	waitmovement 0
+	setvar VAR_0x4050, 2 @Advance to next part
+	setflag FLAG_SYS_B_DASH @Allow running
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F @Fix respawning
+	msgbox LittlerootTown_BrendansHouse_1F_Text_1F7A1C, MSGBOX_DEFAULT
+	closemessage
+	playfanfare MUS_FANFA4
+	message LittlerootTown_Text_1E8925
+	waitfanfare
+	msgbox LittlerootTown_BrendansHouse_1F_Text_1F7A46, MSGBOX_DEFAULT
+	closemessage
+	applymovement 1, LittlerootTown_MomMov2
+	waitmovement 0
+	releaseall
+	end
+
+LittlerootTown_MomMov1::
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_up
+	step_end
+
+LittlerootTown_MomMov2::
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_in_place_fastest_right
+	step_end
 
 LittlerootTown_BrendansHouse_1F_EventScript_1F7814:: @ 81F7814
 	lockall

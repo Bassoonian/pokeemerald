@@ -9,24 +9,24 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "EverGrandeCity_EventScript_1E7D2B",
             "type": "sign",
-            "x": 19,
-            "y": 43
+            "x": 22,
+            "y": 30
         },
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
             "script": "Common_EventScript_ShowPokemonCenterSign",
             "type": "sign",
-            "x": 29,
-            "y": 48
+            "x": 30,
+            "y": 49
         },
         {
             "elevation": 5,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
             "script": "EverGrandeCity_EventScript_1E7D34",
             "type": "sign",
-            "x": 18,
-            "y": 52
+            "x": 19,
+            "y": 53
         },
         {
             "elevation": 0,
@@ -41,8 +41,8 @@
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
             "script": "Common_EventScript_ShowPokemonCenterSign",
             "type": "sign",
-            "x": 28,
-            "y": 48
+            "x": 29,
+            "y": 49
         }
     ],
     "connections": [
@@ -54,7 +54,7 @@
         {
             "direction": "right",
             "map": "MAP_ROUTE101",
-            "offset": 40
+            "offset": 34
         },
         {
             "direction": "left",
@@ -69,8 +69,8 @@
             "type": "trigger",
             "var": "VAR_TEMP_1",
             "var_value": "0",
-            "x": 17,
-            "y": 58
+            "x": 24,
+            "y": 53
         },
         {
             "elevation": 1,
@@ -78,53 +78,8 @@
             "type": "trigger",
             "var": "VAR_TEMP_1",
             "var_value": "0",
-            "x": 16,
-            "y": 58
-        },
-        {
-            "elevation": 1,
-            "script": "EverGrandeCity_EventScript_1E7D46",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 18,
-            "y": 58
-        },
-        {
-            "elevation": 1,
-            "script": "EverGrandeCity_EventScript_1E7D46",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 19,
-            "y": 58
-        },
-        {
-            "elevation": 1,
-            "script": "EverGrandeCity_EventScript_1E7D46",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 20,
-            "y": 58
-        },
-        {
-            "elevation": 1,
-            "script": "EverGrandeCity_EventScript_1E7D46",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 21,
-            "y": 58
-        },
-        {
-            "elevation": 1,
-            "script": "EverGrandeCity_EventScript_1E7D46",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 22,
-            "y": 58
+            "x": 39,
+            "y": 50
         },
         {
             "elevation": 1,
@@ -133,7 +88,7 @@
             "var": "VAR_TEMP_1",
             "var_value": "0",
             "x": 23,
-            "y": 58
+            "y": 55
         },
         {
             "elevation": 1,
@@ -142,7 +97,7 @@
             "var": "VAR_TEMP_1",
             "var_value": "0",
             "x": 24,
-            "y": 58
+            "y": 54
         },
         {
             "elevation": 1,
@@ -150,8 +105,8 @@
             "type": "trigger",
             "var": "VAR_TEMP_1",
             "var_value": "0",
-            "x": 25,
-            "y": 58
+            "x": 23,
+            "y": 53
         },
         {
             "elevation": 1,
@@ -159,8 +114,53 @@
             "type": "trigger",
             "var": "VAR_TEMP_1",
             "var_value": "0",
-            "x": 26,
-            "y": 58
+            "x": 24,
+            "y": 55
+        },
+        {
+            "elevation": 1,
+            "script": "EverGrandeCity_EventScript_1E7D46",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "0",
+            "x": 24,
+            "y": 52
+        },
+        {
+            "elevation": 1,
+            "script": "EverGrandeCity_EventScript_1E7D46",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "0",
+            "x": 23,
+            "y": 54
+        },
+        {
+            "elevation": 1,
+            "script": "EverGrandeCity_EventScript_1E7D46",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "0",
+            "x": 39,
+            "y": 53
+        },
+        {
+            "elevation": 1,
+            "script": "EverGrandeCity_EventScript_1E7D46",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "0",
+            "x": 39,
+            "y": 51
+        },
+        {
+            "elevation": 1,
+            "script": "EverGrandeCity_EventScript_1E7D46",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "0",
+            "x": 39,
+            "y": 52
         }
     ],
     "id": "MAP_EVER_GRANDE_CITY",
@@ -178,29 +178,29 @@
             "dest_map": "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 18,
+            "x": 20,
             "y": 5
         },
         {
             "dest_map": "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 27,
-            "y": 48
+            "x": 28,
+            "y": 49
         },
         {
             "dest_map": "MAP_VICTORY_ROAD_1F",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 18,
-            "y": 41
+            "x": 20,
+            "y": 29
         },
         {
             "dest_map": "MAP_VICTORY_ROAD_1F",
             "dest_warp_id": 1,
             "elevation": 0,
-            "x": 18,
-            "y": 27
+            "x": 20,
+            "y": 21
         }
     ],
     "weather": "WEATHER_SUNNY"

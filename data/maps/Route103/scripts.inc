@@ -27,15 +27,15 @@ Route103_EventScript_1EC3C1:: @ 81EC3C1
 	end
 
 Route103_EventScript_1EC3DA:: @ 81EC3DA
-	msgbox Route103_Text_1EC7A6, MSGBOX_DEFAULT
-	closemessage
+	@ msgbox Route103_Text_1EC7A6, MSGBOX_DEFAULT
+	@ closemessage
 	playbgm MUS_GIRL_SUP, 1
-	applymovement 2, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 2, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 2, Common_Movement_Delay48
-	waitmovement 0
+	@ applymovement 2, Common_Movement_FacePlayer
+	@ waitmovement 0
+	@ applymovement 2, Common_Movement_ExclamationMark
+	@ waitmovement 0
+	@ applymovement 2, Common_Movement_Delay48
+	@ waitmovement 0
 	msgbox Route103_Text_1EC7DE, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route103_EventScript_1EC48E
@@ -44,15 +44,15 @@ Route103_EventScript_1EC3DA:: @ 81EC3DA
 	end
 
 Route103_EventScript_1EC434:: @ 81EC434
-	msgbox Route103_Text_1EC989, MSGBOX_DEFAULT
-	closemessage
+	@ msgbox Route103_Text_1EC989, MSGBOX_DEFAULT
+	@ closemessage
 	playbgm MUS_BOY_SUP, 1
-	applymovement 2, Common_Movement_FacePlayer
-	waitmovement 0
-	applymovement 2, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 2, Common_Movement_Delay48
-	waitmovement 0
+	@ applymovement 2, Common_Movement_FacePlayer
+	@ waitmovement 0
+	@ applymovement 2, Common_Movement_ExclamationMark
+	@ waitmovement 0
+	@ applymovement 2, Common_Movement_Delay48
+	@ waitmovement 0
 	msgbox Route103_Text_1EC9CE, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route103_EventScript_1EC4BE
@@ -92,12 +92,12 @@ Route103_EventScript_1EC4DE:: @ 81EC4DE
 
 Route103_EventScript_1EC4EE:: @ 81EC4EE
 	msgbox Route103_Text_1EC8AE, MSGBOX_DEFAULT
-	goto Route103_EventScript_1EC50A
+	goto R1_RivalLeaves
 	end
 
 Route103_EventScript_1EC4FC:: @ 81EC4FC
 	msgbox Route103_Text_1ECA79, MSGBOX_DEFAULT
-	goto Route103_EventScript_1EC50A
+	goto R1_RivalLeaves
 	end
 
 Route103_EventScript_1EC50A:: @ 81EC50A
