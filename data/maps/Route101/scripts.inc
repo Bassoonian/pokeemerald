@@ -70,7 +70,7 @@ Route1_Prof4::
 Route1_ProfA:
 	lockall
 	setvar VAR_0x4050, 3
-	setflag FLAG_SPECIAL_FLAG_0x4000
+	setflag FLAG_HIDE_MAP_NAME_POPUP
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
 	applymovement 2, R1ProfMov1
 	waitmovement 0
@@ -85,7 +85,7 @@ Route1_ProfB:
 
 Route1_ProfC:
 	lockall
-	clearflag FLAG_SPECIAL_FLAG_0x4000
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
 	msgbox Route101_Text_1EBE9A, MSGBOX_DEFAULT
 	closemessage
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown
