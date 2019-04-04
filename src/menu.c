@@ -122,20 +122,18 @@ const struct MoveMenuInfoIcon gMoveMenuInfoIcons[] =
     {  8,  8, 0xAF },       // Unused (Small dark pokeball)
 };
 
+
 // Forward declarations
-extern void sub_81973A4(void);
-extern void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_DrawDialogueFrame(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_ClearStdWindowAndFrame(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_ClearDialogWindowAndFrame(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_DrawDialogFrameWithCustomTileAndPalette(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_ClearDialogWindowAndFrameNullPalette(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_DrawStdFrameWithCustomTileAndPalette(u8, u8, u8, u8, u8, u8);
-extern void WindowFunc_ClearStdWindowAndFrameToTransparent(u8, u8, u8, u8, u8, u8);
-extern u8 Menu_MoveCursor(s8);
-extern u8 sub_8199134(s8, s8);
-extern void sub_8198C78(void);
-extern void task_free_buf_after_copying_tile_data_to_vram(u8 taskId);
+void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
+void WindowFunc_DrawDialogueFrame(u8, u8, u8, u8, u8, u8);
+void WindowFunc_ClearStdWindowAndFrame(u8, u8, u8, u8, u8, u8);
+void WindowFunc_ClearDialogWindowAndFrame(u8, u8, u8, u8, u8, u8);
+void WindowFunc_DrawDialogFrameWithCustomTileAndPalette(u8, u8, u8, u8, u8, u8);
+void WindowFunc_ClearDialogWindowAndFrameNullPalette(u8, u8, u8, u8, u8, u8);
+void WindowFunc_DrawStdFrameWithCustomTileAndPalette(u8, u8, u8, u8, u8, u8);
+void WindowFunc_ClearStdWindowAndFrameToTransparent(u8, u8, u8, u8, u8, u8);
+void sub_8198C78(void);
+void task_free_buf_after_copying_tile_data_to_vram(u8 taskId);
 
 void InitStandardTextBoxWindows(void)
 {
@@ -434,7 +432,7 @@ void sub_819789C(void)
     LoadPalette(gUnknown_0860F074, STD_WINDOW_PALETTE_NUM * 0x10, 0x14);
 }
 
-void sub_81978B0(u16 offset)
+void Menu_LoadStdPalAt(u16 offset)
 {
     LoadPalette(gUnknown_0860F074, offset, 0x14);
 }
