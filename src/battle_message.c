@@ -5,7 +5,7 @@
 #include "battle_message.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
-#include "data2.h"
+#include "data.h"
 #include "event_data.h"
 #include "frontier_util.h"
 #include "international_string_util.h"
@@ -39,7 +39,6 @@ struct BattleWindowText
     u8 shadowColor;
 };
 
-extern const u8 gTrainerClassNames[][13];
 extern const u16 gUnknown_08D85620[];
 
 // this file's functions
@@ -617,7 +616,7 @@ static const u8 sText_NotDoneYet[] = _("This move effect is not done yet!\p");
 static const u8 sText_PkmnBlewAwayToxicSpikes[] = _("{B_ATK_NAME_WITH_PREFIX} blew away\nTOXIC SPIKES!");
 static const u8 sText_PkmnBlewAwayStickyWeb[] = _("{B_ATK_NAME_WITH_PREFIX} blew away\nSTICKY WEB!");
 static const u8 sText_PkmnBlewAwayStealthRock[] = _("{B_ATK_NAME_WITH_PREFIX} blew away\nSTEALTH ROCK!");
-static const u8 sText_StickyWebUsed[] = _("A sticky web spreads out on the\nground around your team!");
+static const u8 sText_StickyWebUsed[] = _("A sticky web spreads out on the\nground around {B_DEF_TEAM2} team!");
 static const u8 sText_QuashSuccess[] = _("The opposing {B_ATK_NAME_WITH_PREFIX}'s move was postponed!");
 static const u8 sText_IonDelugeOn[] = _("A deluge of ions showers\nthe battlefield!");
 static const u8 sText_TopsyTurvySwitchedStats[] = _("{B_ATK_NAME_WITH_PREFIX}'s stat changes were\nall reversed!");
@@ -653,9 +652,11 @@ static const u8 sText_SafetyGooglesProtected[] = _("{B_DEF_NAME_WITH_PREFIX} is 
 static const u8 sText_FlowerVeilProtected[] = _("{B_DEF_NAME_WITH_PREFIX} surrounded itself\nwith a veil of petals!");
 static const u8 sText_SweetVeilProtected[] = _("{B_DEF_NAME_WITH_PREFIX} surrounded itself\nwith a veil of sweetness!");
 static const u8 sText_AromaVeilProtected[] = _("{B_DEF_NAME_WITH_PREFIX} is protected\nby an aromatic veil!");
+static const u8 sText_CelebrateMessage[] = _("Congratulations, {B_PLAYER_NAME}!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_CELEBRATEMESSAGE - 12] = sText_CelebrateMessage,
     [STRINGID_AROMAVEILPROTECTED - 12] = sText_AromaVeilProtected,
     [STRINGID_SWEETVEILPROTECTED - 12] = sText_SweetVeilProtected,
     [STRINGID_FLOWERVEILPROTECTED - 12] = sText_FlowerVeilProtected,
@@ -3145,6 +3146,18 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 break;
             case B_TXT_ATK_TEAM2:
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
+                    toCpy = sText_Your2;
+                else
+                    toCpy = sText_Opposing2;
+                break;
+            case B_TXT_DEF_TEAM1:
+                if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
+                    toCpy = sText_Your1;
+                else
+                    toCpy = sText_Opposing1;
+                break;
+            case B_TXT_DEF_TEAM2:
+                if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
                     toCpy = sText_Your2;
                 else
                     toCpy = sText_Opposing2;

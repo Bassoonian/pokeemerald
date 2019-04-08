@@ -18,16 +18,6 @@
             "direction": "up",
             "map": "MAP_DEWFORD_TOWN",
             "offset": -6
-        },
-        {
-            "direction": "right",
-            "map": "MAP_PACIFIDLOG_TOWN",
-            "offset": -10
-        },
-        {
-            "direction": "left",
-            "map": "MAP_ROUTE112",
-            "offset": 0
         }
     ],
     "coord_events": [
@@ -123,7 +113,7 @@
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Route108_EventScript_290D4D",
+            "script": "Route108_EventScript_ItemStarPiece",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 42,

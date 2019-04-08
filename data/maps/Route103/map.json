@@ -18,11 +18,6 @@
             "direction": "right",
             "map": "MAP_EVER_GRANDE_CITY",
             "offset": -38
-        },
-        {
-            "direction": "left",
-            "map": "MAP_OLDALE_TOWN",
-            "offset": 0
         }
     ],
     "coord_events": [
@@ -69,8 +64,8 @@
             "script": "Route103_EventScript_1EC5F4",
             "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
-            "x": 61,
-            "y": 14
+            "x": 71,
+            "y": 11
         },
         {
             "elevation": 3,
@@ -196,7 +191,7 @@
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Route103_EventScript_290CE5",
+            "script": "Route103_EventScript_ItemGuardSpec",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 50,
@@ -209,11 +204,11 @@
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Route103_EventScript_2906BB",
+            "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 74,
-            "y": 11
+            "x": 67,
+            "y": 7
         },
         {
             "elevation": 3,
@@ -222,7 +217,7 @@
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Route103_EventScript_2906BB",
+            "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 72,
@@ -287,7 +282,7 @@
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Route103_EventScript_290CF2",
+            "script": "Route103_EventScript_ItemPPUp",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 64,

@@ -69,18 +69,7 @@
             "y": 29
         }
     ],
-    "connections": [
-        {
-            "direction": "left",
-            "map": "MAP_ROUTE102",
-            "offset": 2
-        },
-        {
-            "direction": "right",
-            "map": "MAP_ROUTE133",
-            "offset": -4
-        }
-    ],
+    "connections": null,
     "coord_events": [
         {
             "elevation": 3,
@@ -233,7 +222,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "PetalburgCity_EventScript_2910B4",
+            "script": "PetalburgCity_EventScript_ItemMaxRevive",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 19,
@@ -246,7 +235,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "PetalburgCity_EventScript_2910C1",
+            "script": "PetalburgCity_EventScript_ItemEther",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 3,

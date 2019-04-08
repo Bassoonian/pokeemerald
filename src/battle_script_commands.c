@@ -51,6 +51,7 @@
 #include "pokemon_summary_screen.h"
 #include "pokenav.h"
 #include "menu_specialized.h"
+#include "data.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
 
@@ -67,8 +68,8 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
 static bool32 IsMonGettingExpSentOut(void);
 static void sub_804F17C(void);
 static bool8 sub_804F1CC(void);
-static void sub_804F100(void);
-static void sub_804F144(void);
+static void DrawLevelUpWindow1(void);
+static void DrawLevelUpWindow2(void);
 static bool8 sub_804F344(void);
 static void PutMonIconOnLvlUpBox(void);
 static void PutLevelAndGenderOnLvlUpBox(void);
@@ -297,7 +298,7 @@ static void atkDA_tryswapabilities(void);
 static void atkDB_tryimprison(void);
 static void atkDC_setstealthrock(void);
 static void atkDD_setuserstatus3(void);
-static void atkDE_asistattackselect(void);
+static void atkDE_assistattackselect(void);
 static void atkDF_trysetmagiccoat(void);
 static void atkE0_trysetsnatch(void);
 static void atkE1_trygetintimidatetarget(void);
@@ -556,7 +557,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     atkDB_tryimprison,
     atkDC_setstealthrock,
     atkDD_setuserstatus3,
-    atkDE_asistattackselect,
+    atkDE_assistattackselect,
     atkDF_trysetmagiccoat,
     atkE0_trysetsnatch,
     atkE1_trygetintimidatetarget,
@@ -905,6 +906,9 @@ bool32 IsBattlerProtected(u8 battlerId, u16 move)
         return TRUE;
     else if (gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_CRAFTY_SHIELD
              && gBattleMoves[move].power == 0)
+        return TRUE;
+    else if (gSideStatuses[GetBattlerSide(battlerId)] & SIDE_STATUS_MAT_BLOCK
+             && gBattleMoves[move].power != 0)
         return TRUE;
     else
         return FALSE;
@@ -2011,6 +2015,8 @@ void SetMoveEffect(bool32 primary, u32 certain)
         gEffectBattler = gBattlerTarget;
         gBattleScripting.battler = gBattlerAttacker;
     }
+     // Just in case this flag is still set
+    gBattleScripting.moveEffect &= ~(MOVE_EFFECT_CERTAIN);
 
     if (GetBattlerAbility(gEffectBattler) == ABILITY_SHIELD_DUST && !(gHitMarker & HITMARKER_IGNORE_SAFEGUARD)
         && !primary && gBattleScripting.moveEffect <= 9)
@@ -2363,6 +2369,13 @@ void SetMoveEffect(bool32 primary, u32 certain)
                 }
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = sMoveEffectBS_Ptrs[gBattleScripting.moveEffect];
+                break;
+            case MOVE_EFFECT_HAPPY_HOUR:
+                if (GET_BATTLER_SIDE(gBattlerAttacker) == B_SIDE_PLAYER)
+                {
+                    gBattleStruct->moneyMultiplier *= 2;
+                }
+                gBattlescriptCurrInstr++;
                 break;
             case MOVE_EFFECT_TRI_ATTACK:
                 if (gBattleMons[gEffectBattler].status1)
@@ -2731,6 +2744,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_WIDE_GUARD
                     || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_QUICK_GUARD
                     || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_CRAFTY_SHIELD
+                    || gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_MAT_BLOCK
                     || gProtectStructs[gBattlerTarget].spikyShielded
                     || gProtectStructs[gBattlerTarget].kingsShielded
                     || gProtectStructs[gBattlerTarget].banefulBunkered)
@@ -2739,6 +2753,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gSideStatuses[GetBattlerSide(gBattlerTarget)] &= ~(SIDE_STATUS_WIDE_GUARD);
                     gSideStatuses[GetBattlerSide(gBattlerTarget)] &= ~(SIDE_STATUS_QUICK_GUARD);
                     gSideStatuses[GetBattlerSide(gBattlerTarget)] &= ~(SIDE_STATUS_CRAFTY_SHIELD);
+                    gSideStatuses[GetBattlerSide(gBattlerTarget)] &= ~(SIDE_STATUS_MAT_BLOCK);
                     gProtectStructs[gBattlerTarget].spikyShielded = 0;
                     gProtectStructs[gBattlerTarget].kingsShielded = 0;
                     gProtectStructs[gBattlerTarget].banefulBunkered = 0;
@@ -3173,9 +3188,8 @@ static void atk23_getexp(void)
     s32 i; // also used as stringId
     u8 holdEffect;
     s32 sentIn;
-
     s32 viaExpShare = 0;
-    u16* exp = &gBattleStruct->expValue;
+    u16 *exp = &gBattleStruct->expValue;
 
     gBattlerFainted = GetBattlerForBattleScript(gBattlescriptCurrInstr[1]);
     sentIn = gSentPokesToOpponent[(gBattlerFainted & 2) >> 1];
@@ -3330,14 +3344,14 @@ static void atk23_getexp(void)
                         }
                     }
                     else
+                    {
                         gBattleStruct->expGetterBattlerId = 0;
+                    }
 
-                    PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, gBattleStruct->expGetterMonId)
-
+                    PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, gBattleStruct->expGetterMonId);
                     // buffer 'gained' or 'gained a boosted'
-                    PREPARE_STRING_BUFFER(gBattleTextBuff2, i)
-
-                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 5, gBattleMoveDamage)
+                    PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
+                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 5, gBattleMoveDamage);
 
                     PrepareStringBattle(STRINGID_PKMNGAINEDEXP, gBattleStruct->expGetterBattlerId);
                     MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
@@ -3353,12 +3367,12 @@ static void atk23_getexp(void)
             gBattleResources->bufferB[gBattleStruct->expGetterBattlerId][0] = 0;
             if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP) && GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) != MAX_LEVEL)
             {
-                gBattleResources->statsBeforeLvlUp->hp = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MAX_HP);
-                gBattleResources->statsBeforeLvlUp->atk = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_ATK);
-                gBattleResources->statsBeforeLvlUp->def = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_DEF);
-                gBattleResources->statsBeforeLvlUp->spd = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPEED);
-                gBattleResources->statsBeforeLvlUp->spAtk = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPATK);
-                gBattleResources->statsBeforeLvlUp->spDef = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPDEF);
+                gBattleResources->beforeLvlUp->stats[STAT_HP]    = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MAX_HP);
+                gBattleResources->beforeLvlUp->stats[STAT_ATK]   = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_ATK);
+                gBattleResources->beforeLvlUp->stats[STAT_DEF]   = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_DEF);
+                gBattleResources->beforeLvlUp->stats[STAT_SPEED] = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPEED);
+                gBattleResources->beforeLvlUp->stats[STAT_SPATK] = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPATK);
+                gBattleResources->beforeLvlUp->stats[STAT_SPDEF] = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_SPDEF);
 
                 gActiveBattler = gBattleStruct->expGetterBattlerId;
                 BtlController_EmitExpUpdate(0, gBattleStruct->expGetterMonId, gBattleMoveDamage);
@@ -3377,9 +3391,8 @@ static void atk23_getexp(void)
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && gBattlerPartyIndexes[gActiveBattler] == gBattleStruct->expGetterMonId)
                     HandleLowHpMusicChange(&gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], gActiveBattler);
 
-                PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gActiveBattler, gBattleStruct->expGetterMonId)
-
-                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 3, GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL))
+                PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gActiveBattler, gBattleStruct->expGetterMonId);
+                PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff2, 3, GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL));
 
                 BattleScriptPushCursor();
                 gLeveledUpInBattle |= gBitTable[gBattleStruct->expGetterMonId];
@@ -3419,7 +3432,9 @@ static void atk23_getexp(void)
         break;
     case 5: // looper increment
         if (gBattleMoveDamage) // there is exp to give, goto case 3 that gives exp
+        {
             gBattleScripting.atk23_state = 3;
+        }
         else
         {
             gBattleStruct->expGetterMonId++;
@@ -5623,8 +5638,7 @@ static void atk5D_getmoneyreward(void)
         moneyReward += GetTrainerMoneyToGive(gTrainerBattleOpponent_B);
 
     AddMoney(&gSaveBlock1Ptr->money, moneyReward);
-
-    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward)
+    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff1, 5, moneyReward);
 
     gBattlescriptCurrInstr++;
 }
@@ -5910,7 +5924,7 @@ static void atk6C_drawlvlupbox(void)
         gBattleScripting.atk6C_state = 4;
         break;
     case 4:
-        sub_804F100();
+        DrawLevelUpWindow1();
         PutWindowTilemap(13);
         CopyWindowToVram(13, 3);
         gBattleScripting.atk6C_state++;
@@ -5927,7 +5941,7 @@ static void atk6C_drawlvlupbox(void)
         if (gMain.newKeys != 0)
         {
             PlaySE(SE_SELECT);
-            sub_804F144();
+            DrawLevelUpWindow2();
             CopyWindowToVram(13, 2);
             gBattleScripting.atk6C_state++;
         }
@@ -5968,20 +5982,20 @@ static void atk6C_drawlvlupbox(void)
     }
 }
 
-static void sub_804F100(void)
+static void DrawLevelUpWindow1(void)
 {
-    struct StatsArray currentStats;
+    u16 currStats[NUM_STATS];
 
-    GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], &currentStats);
-    DrawLevelUpWindowPg1(0xD, gBattleResources->statsBeforeLvlUp, &currentStats, 0xE, 0xD, 0xF);
+    GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], currStats);
+    DrawLevelUpWindowPg1(0xD, gBattleResources->beforeLvlUp->stats, currStats, 0xE, 0xD, 0xF);
 }
 
-static void sub_804F144(void)
+static void DrawLevelUpWindow2(void)
 {
-    struct StatsArray currentStats;
+    u16 currStats[NUM_STATS];
 
-    GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], &currentStats);
-    DrawLevelUpWindowPg2(0xD, &currentStats, 0xE, 0xD, 0xF);
+    GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], currStats);
+    DrawLevelUpWindowPg2(0xD, currStats, 0xE, 0xD, 0xF);
 }
 
 static void sub_804F17C(void)
@@ -7402,6 +7416,12 @@ static void atk77_setprotectlike(void)
                 gSideStatuses[side] |= SIDE_STATUS_CRAFTY_SHIELD;
                 gBattleCommunication[MULTISTRING_CHOOSER] = 3;
                 gDisableStructs[gBattlerAttacker].protectUses++;
+                fail = FALSE;
+            }
+            else if (gCurrentMove == MOVE_MAT_BLOCK && !(gSideStatuses[side] & SIDE_STATUS_MAT_BLOCK))
+            {
+                gSideStatuses[side] |= SIDE_STATUS_MAT_BLOCK;
+                gBattleCommunication[MULTISTRING_CHOOSER] = 3;
                 fail = FALSE;
             }
         }
@@ -10367,7 +10387,7 @@ static void atkDD_setuserstatus3(void)
     }
 }
 
-static void atkDE_asistattackselect(void)
+static void atkDE_assistattackselect(void)
 {
     s32 chooseableMovesNo = 0;
     struct Pokemon* party;
@@ -10546,6 +10566,7 @@ static void atkE5_pickup(void)
     s32 i;
     u16 species, heldItem;
     u8 ability;
+    u8 lvlDivBy10;
 
     if (InBattlePike())
     {
@@ -10580,6 +10601,9 @@ static void atkE5_pickup(void)
         {
             species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
             heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+            lvlDivBy10 = (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL)-1) / 10; //Moving this here makes it easier to add in abilities like Honey Gather
+            if (lvlDivBy10 > 9)
+                lvlDivBy10 = 9;
 
             if (GetMonData(&gPlayerParty[i], MON_DATA_ALT_ABILITY))
                 ability = gBaseStats[species].ability2;
@@ -10594,9 +10618,6 @@ static void atkE5_pickup(void)
             {
                 s32 j;
                 s32 rand = Random() % 100;
-                u8 lvlDivBy10 = (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL) - 1) / 10;
-                if (lvlDivBy10 > 9)
-                    lvlDivBy10 = 9;
 
                 for (j = 0; j < 9; j++)
                 {
