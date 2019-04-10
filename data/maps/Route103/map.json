@@ -64,8 +64,8 @@
             "script": "Route103_EventScript_1EC5F4",
             "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
-            "x": 71,
-            "y": 11
+            "x": 60,
+            "y": 14
         },
         {
             "elevation": 3,
@@ -220,8 +220,8 @@
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 72,
-            "y": 8
+            "x": 71,
+            "y": 11
         },
         {
             "elevation": 3,

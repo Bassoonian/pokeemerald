@@ -54,7 +54,7 @@
         {
             "direction": "down",
             "map": "MAP_ROUTE108",
-            "offset": 6
+            "offset": 0
         },
         {
             "direction": "up",
@@ -85,16 +85,16 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_M",
+            "flag": "FLAG_HIDE_ROUTE_101_ZIGZAGOON",
+            "graphics_id": "EVENT_OBJ_GFX_MOM",
             "movement_range_x": 0,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "DewfordTown_EventScript_1E9511",
             "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "0",
-            "x": 28,
-            "y": 5
+            "x": 23,
+            "y": 7
         },
         {
             "elevation": 3,
@@ -111,15 +111,15 @@
         },
         {
             "elevation": 1,
-            "flag": "FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN",
-            "graphics_id": "EVENT_OBJ_GFX_MR_BRINEYS_BOAT",
+            "flag": "FLAG_HIDE_ROUTE_101_ZIGZAGOON",
+            "graphics_id": "EVENT_OBJ_GFX_ZIGZAGOON_1",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 29,
+            "x": 22,
             "y": 7
         },
         {

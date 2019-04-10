@@ -500,6 +500,7 @@ R1_RivalMove2:
 	step_end
 
 R1_RivalLeaves:
+	closemessage
 	setvar VAR_0x4050, 4
 	@Movements here
 	setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON

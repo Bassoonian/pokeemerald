@@ -389,7 +389,7 @@ LittlerootTown_MaysHouse_1F_EventScript_292ABA:: @ 8292ABA
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_VIGOROTH, 0
+	playmoncry SPECIES_GROWLITHE, 0
 	msgbox LittlerootTown_BrendansHouse_1F_Text_1F7EA8, MSGBOX_DEFAULT
 	waitmoncry
 	release

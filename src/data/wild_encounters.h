@@ -11,6 +11,9 @@
  
  //Start of regular Pokemon tables.
 
+ //NOTE TO SELF: PERCENTAGES
+ // 20/20/10/10/10/10/5/5/4/4/1/1
+
 const struct WildPokemon gRoute101_LandMons[] =
 {
     {2, 2, SPECIES_SENTRET},
@@ -77,8 +80,8 @@ const struct WildPokemonInfo gRoute102_FishingMonsInfo = {30, gRoute102_FishingM
 const struct WildPokemon gRoute103_LandMons[] =
 {
     {2, 2, SPECIES_SNUBBULL},
-    {3, 3, SPECIES_SNUBBULL},
     {3, 3, SPECIES_SEEDOT},
+    {3, 3, SPECIES_SNUBBULL},
     {4, 4, SPECIES_SEEDOT},
     {2, 2, SPECIES_SLOWPOKE},
     {3, 3, SPECIES_SLAKOTH},
@@ -190,6 +193,24 @@ const struct WildPokemon gRoute105_FishingMons[] =
 };
 
 const struct WildPokemonInfo gRoute105_FishingMonsInfo = {30, gRoute105_FishingMons};
+
+const struct WildPokemon gRoute108_LandMons[] =
+{
+    {2, 2, SPECIES_SPINARAK},
+    {3, 3, SPECIES_SLAKOTH},
+    {3, 3, SPECIES_WINGULL},
+    {4, 4, SPECIES_WINGULL},
+    {2, 2, SPECIES_WINGULL},
+    {3, 3, SPECIES_SENTRET},
+    {3, 3, SPECIES_SENTRET},
+    {4, 4, SPECIES_SENTRET},
+    {3, 3, SPECIES_SENTRET},
+    {3, 3, SPECIES_SENTRET},
+    {2, 2, SPECIES_SENTRET},
+    {4, 4, SPECIES_SENTRET},
+};
+
+const struct WildPokemonInfo gRoute108_LandMonsInfo = {20, gRoute108_LandMons};
 
 const struct WildPokemon gRoute110_LandMons[] =
 {
@@ -3479,7 +3500,7 @@ const struct WildPokemonHeader gWildMonHeaders[] =
     {
         .mapGroup = MAP_GROUP(ROUTE108),
         .mapNum = MAP_NUM(ROUTE108),
-        .landMonsInfo = NULL,
+        .landMonsInfo = &gRoute108_LandMonsInfo,
         .waterMonsInfo = &gRoute108_WaterMonsInfo,
         .rockSmashMonsInfo = NULL,
         .fishingMonsInfo = &gRoute108_FishingMonsInfo,
