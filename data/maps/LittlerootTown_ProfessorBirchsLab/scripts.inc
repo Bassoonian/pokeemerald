@@ -529,22 +529,20 @@ LittlerootTown_ProfessorBirchsLab_EventScript_1FA2F8:: @ 81FA2F8
 	call LittlerootTown_ProfessorBirchsLab_EventScript_1FA3AC
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_1FAC4B, MSGBOX_DEFAULT
 	closemessage
-	applymovement 3, LittlerootTown_ProfessorBirchsLab_Movement_1FA3E0
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight
-	waitmovement 0
+	return
+
+ProfLab_Woods_Cont::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_1FA352
 	compare VAR_RESULT, FEMALE
 	call_if_eq LittlerootTown_ProfessorBirchsLab_EventScript_1FA37F
-	setvar VAR_BIRCH_LAB_STATE, 5
-	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_ROUTE102_ACCESSIBLE, 1
-	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
-	setvar VAR_0x4050, 3
-	releaseall
-	end
+	@ setvar VAR_BIRCH_LAB_STATE, 5
+	@ setflag FLAG_ADVENTURE_STARTED
+	@ setvar VAR_ROUTE102_ACCESSIBLE, 1
+	@ setvar VAR_LITTLEROOT_RIVAL_STATE, 4
+	@ setvar VAR_0x4050, 3
+	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_1FA352:: @ 81FA352
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_1FADD7, MSGBOX_DEFAULT
@@ -570,7 +568,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_1FA3AC:: @ 81FA3AC
 	waitfanfare
 	setflag FLAG_SYS_POKEDEX_GET
 	special sub_81AFDA0
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	@ setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
 

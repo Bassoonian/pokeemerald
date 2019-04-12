@@ -502,9 +502,71 @@ R1_RivalMove2:
 R1_RivalLeaves:
 	closemessage
 	setvar VAR_0x4050, 4
-	@Movements here
 	setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
+	@Figure out movements
+	switch VAR_ROUTE101_STATE
+	case 0, R1_RivLeavLeft
+	case 1, R1_RivLeavRight
 	end
+
+R1_RivLeavLeft:
+	call_if_unset FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG, R1_RivWalkAroundA
+	applymovement 4, R1_RivalLeaveMov
+	waitmovement 0
+	removeobject 4
+	clearflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_ROUTE101_STATE, 0
+	releaseall
+	end
+
+R1_RivLeavRight:
+	call_if_unset FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG, R1_RivWalkAroundB
+	applymovement 4, R1_RivalLeaveMov
+	waitmovement 0
+	removeobject 4
+	clearflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_ROUTE101_STATE, 0
+	releaseall
+	end
+
+R1_RivWalkAroundA:
+	applymovement 4, R1_RivalWalkAroundA
+	waitmovement 0
+	return
+
+R1_RivWalkAroundB:
+	applymovement 4, R1_RivalWalkAroundB
+	waitmovement 0
+	return
+
+R1_RivalWalkAroundA:
+	walk_right
+	walk_down
+	walk_down
+	walk_left
+	step_end
+
+R1_RivalWalkAroundB:
+	walk_left
+	walk_down
+	walk_down
+	walk_right
+	step_end
+
+R1_RivalLeaveMov:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
 
 Route101_EventScript_1EBCDE:: @ 81EBCDE
 	lockall

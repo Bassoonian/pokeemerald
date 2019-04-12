@@ -519,7 +519,9 @@
         "Route119_House"
     ],
     "gMapGroup33": [
-        "Route124_DivingTreasureHuntersHouse"
+        "Route124_DivingTreasureHuntersHouse",
+        "DewfordTown_Mart",
+        "EverGrandeCity_Mart"
     ],
     "gMapGroup4": [
         "LavaridgeTown_HerbShop",

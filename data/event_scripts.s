@@ -2403,6 +2403,22 @@ Common_Movement_WalkInPlaceDown: @ 82725AA
 	walk_in_place_fastest_down
 	step_end
 
+Common_Movement_WalkLeft:
+	walk_left
+	step_end
+
+Common_Movement_WalkRight:
+	walk_right
+	step_end
+
+Common_Movement_WalkUp:
+	walk_up
+	step_end
+
+Common_Movement_WalkDown:
+	walk_down
+	step_end
+
 RustboroCity_Movement_2725AC: @ 82725AC
 	face_right
 	step_end
@@ -2583,10 +2599,10 @@ gUnknown_08272B48:: @ 8272B48
 	.string "The {STR_VAR_2} was transferred\nto the PC.$"
 
 gText_PokemartSign:: @ 8272B6A
-	.string "“Selected items for your convenience!”\nPOKéMON MART$"
+	.string "“Selected items for your convenience!”\nPokémon Mart$"
 
 gText_PokemonCenterSign:: @ 8272B9E
-	.string "“Rejuvenate your tired partners!”\nPOKéMON CENTER$"
+	.string "“Rejuvenate your tired partners!”\nPokémon Center$"
 
 gUnknown_08272BCF:: @ 8272BCF
 	.string "{STR_VAR_1} might like this program.\n… … … … … … … … … … … … … … … …\pBetter get going!$"
@@ -2598,7 +2614,7 @@ gUnknown_08272C5F:: @ 8272C5F
 	.string "The sandstorm is vicious.\nIt's impossible to keep going.$"
 
 gText_SelectWithoutRegisteredItem:: @ 8272C98
-	.string "An item in the BAG can be\nregistered to SELECT for easy use.$"
+	.string "An item in the Bag can be\nregistered to Select for easy use.$"
 
 gUnknown_08272CD5:: @ 8272CD5
 	.string "There's an e-mail from POKéMON TRAINER\nSCHOOL.\p… … … … … …\pA POKéMON may learn up to four moves.\pA TRAINER's expertise is tested on the\nmove sets chosen for POKéMON.\p… … … … … …$"
@@ -2616,13 +2632,13 @@ gUnknown_08272DE3:: @ 8272DE3
 	.string "{PLAYER} is out of usable\nPOKéMON!\p{PLAYER} whited out!$"
 
 gText_RegisteredTrainerinPokeNav:: @ 8272E0F
-	.string "Registered {STR_VAR_1} {STR_VAR_2}\nin the POKéNAV.$"
+	.string "Registered {STR_VAR_1} {STR_VAR_2}\nin the PokéNav.$"
 
 gUnknown_08272E30:: @ 8272E30
 	.string "Do you know the TM SECRET POWER?\pOur group, we love the TM SECRET\nPOWER.\pOne of our members will give it to you.\nCome back and show me if you get it.\pWe'll accept you as a member and sell\nyou good stuff in secrecy.$"
 
 gText_PokerusExplanation:: @ 8272F07
-	.string "Your POKéMON may be infected with\nPOKéRUS.\pLittle is known about the POKéRUS\nexcept that they are microscopic life-\lforms that attach to POKéMON.\pWhile infected, POKéMON are said to\ngrow exceptionally well.$"
+	.string "Your Pokémon may be infected with\nPokérus.\pLittle is known about the Pokérus\nexcept that they are microscopic life-\lforms that attach to Pokémon.\pWhile infected, Pokémon are said to\ngrow exceptionally well.$"
 
 	.include "data/text/surf.inc"
 
@@ -7141,3 +7157,7 @@ gText_082C877B:: @ 82C877B
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/DewfordTown_Mart/scripts.inc"
+
+	.include "data/maps/EverGrandeCity_Mart/scripts.inc"

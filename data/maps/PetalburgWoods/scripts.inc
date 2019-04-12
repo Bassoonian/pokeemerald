@@ -113,6 +113,178 @@ PetalburgWoods_EventScript_22E1A7:: @ 822E1A7
 	releaseall
 	end
 
+PBurgWoods_A::
+	lockall
+	setvar VAR_PETALBURG_WOODS_STATE, 1
+	setflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+	applymovement 4, PBurgWoods_ProfSurprise
+	applymovement 14, PBurgWoods_ProfSurprise
+	waitmovement 0
+	applymovement 4, PBurgWoods_ProfWalk1
+	waitmovement 0
+	call LittlerootTown_ProfessorBirchsLab_EventScript_1FA2F8
+	applymovement 14, PBurgWoods_RivalWalk1
+	waitmovement 0
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	applymovement 14, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	call ProfLab_Woods_Cont
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox PetalburgWoods_Text_22E332, MSGBOX_DEFAULT
+	closemessage
+	applymovement 4, Common_Movement_WalkRight
+	waitmovement 0
+	applymovement 14, PBurgWoods_RivalWalkAway1
+	applymovement 4, PBurgWoods_ProfWalkAway1
+	waitmovement 0
+	removeobject 4
+	removeobject 14
+	releaseall
+	end
+
+PBurgWoods_B::
+	lockall
+	setvar VAR_PETALBURG_WOODS_STATE, 1
+	setflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+	applymovement 4, PBurgWoods_ProfSurprise
+	applymovement 14, PBurgWoods_ProfSurprise
+	waitmovement 0
+	applymovement 4, PBurgWoods_ProfWalk2
+	waitmovement 0
+	call LittlerootTown_ProfessorBirchsLab_EventScript_1FA2F8
+	applymovement 14, PBurgWoods_RivalWalk2
+	waitmovement 0
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	applymovement 14, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	call ProfLab_Woods_Cont
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox PetalburgWoods_Text_22E332, MSGBOX_DEFAULT
+	closemessage
+	applymovement 4, Common_Movement_WalkLeft
+	waitmovement 0
+	applymovement 14, PBurgWoods_RivalWalkAway1
+	applymovement 4, PBurgWoods_ProfWalkAway1
+	waitmovement 0
+	removeobject 4
+	removeobject 14
+	releaseall
+	end
+
+PBurgWoods_ProfSurprise:
+	walk_in_place_up
+	emote_exclamation_mark
+	step_end
+
+PBurgWoods_ProfWalk1:
+	walk_left
+	walk_up
+	step_end
+
+PBurgWoods_ProfWalk2:
+	walk_up
+	step_end
+
+PBurgWoods_RivalWalk1:
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+PBurgWoods_RivalWalk2:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+PBurgWoods_RivalWalkAway1:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+PBurgWoods_ProfWalkAway1:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+PBurgWoods_C::
+	lockall
+	playbgm MUS_AQA_0, 0
+	applymovement 3, PBurgWoods_GruntMov1
+	waitmovement 0
+	goto PBurgWoods_E
+	end
+
+PBurgWoods_D::
+	lockall
+	playbgm MUS_AQA_0, 0
+	applymovement 3, PBurgWoods_GruntMov2
+	waitmovement 0
+	goto PBurgWoods_E
+	end
+
+PBurgWoods_GruntMov1:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+PBurgWoods_GruntMov2:
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	step_end
+
+PBurgWoods_E:
+	msgbox PetalburgWoods_Text_22E4A5, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_GRUNT_8, PetalburgWoods_Text_22E542
+	applymovement 3, PetalburgWoods_Movement_22E1F9
+	waitmovement 0
+	msgbox PetalburgWoods_Text_22E563, MSGBOX_DEFAULT
+	closemessage
+	applymovement 3, PetalburgWoods_Movement_22E1FD
+	waitmovement 0
+	removeobject 3
+	setflag FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+	setvar VAR_PETALBURG_WOODS_STATE, 2
+	releaseall
+	end
+
 PetalburgWoods_Movement_22E1B1: @ 822E1B1
 	face_up
 	delay_16
@@ -207,16 +379,16 @@ PetalburgWoods_Movement_22E1F6: @ 822E1F6
 
 PetalburgWoods_Movement_22E1F9: @ 822E1F9
 	lock_facing_direction
-	walk_up
+	walk_down
 	unlock_facing_direction
 	step_end
 
 PetalburgWoods_Movement_22E1FD: @ 822E1FD
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	delay_16
 	delay_16
 	step_end
