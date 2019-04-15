@@ -183,11 +183,11 @@
         {
             "blockdata_filepath": "data/layouts/Route103/map.bin",
             "border_filepath": "data/layouts/Route103/border.bin",
-            "height": 22,
+            "height": 24,
             "id": "LAYOUT_ROUTE103",
             "name": "Route103_Layout",
             "primary_tileset": "gTileset_General",
-            "secondary_tileset": "gTileset_Petalburg",
+            "secondary_tileset": "gTileset_Rustboro",
             "width": 80
         },
         {

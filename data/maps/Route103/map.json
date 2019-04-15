@@ -18,6 +18,11 @@
             "direction": "right",
             "map": "MAP_EVER_GRANDE_CITY",
             "offset": -38
+        },
+        {
+            "direction": "left",
+            "map": "MAP_OLDALE_TOWN",
+            "offset": 1
         }
     ],
     "coord_events": [
@@ -116,8 +121,8 @@
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "5",
             "trainer_type": "0",
-            "x": 58,
-            "y": 5
+            "x": 31,
+            "y": 8
         },
         {
             "elevation": 3,
@@ -129,8 +134,8 @@
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "6",
             "trainer_type": "0",
-            "x": 59,
-            "y": 5
+            "x": 32,
+            "y": 8
         },
         {
             "elevation": 3,
@@ -142,8 +147,8 @@
             "script": "BerryTreeScript",
             "trainer_sight_or_berry_tree_id": "7",
             "trainer_type": "0",
-            "x": 60,
-            "y": 5
+            "x": 33,
+            "y": 8
         },
         {
             "elevation": 3,
@@ -285,8 +290,8 @@
             "script": "Route103_EventScript_ItemPPUp",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 64,
-            "y": 7
+            "x": 60,
+            "y": 22
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_103",
@@ -297,7 +302,7 @@
             "dest_map": "MAP_ALTERING_CAVE",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 45,
+            "x": 39,
             "y": 6
         }
     ],

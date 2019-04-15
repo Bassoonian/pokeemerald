@@ -54,7 +54,7 @@
         {
             "direction": "right",
             "map": "MAP_ROUTE103",
-            "offset": 0
+            "offset": -1
         }
     ],
     "coord_events": [

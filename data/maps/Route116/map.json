@@ -89,7 +89,18 @@
             "y": 13
         }
     ],
-    "connections": null,
+    "connections": [
+        {
+            "direction": "down",
+            "map": "MAP_OLDALE_TOWN",
+            "offset": 80
+        },
+        {
+            "direction": "left",
+            "map": "MAP_RUSTBORO_CITY",
+            "offset": -40
+        }
+    ],
     "coord_events": [
         {
             "elevation": 3,
